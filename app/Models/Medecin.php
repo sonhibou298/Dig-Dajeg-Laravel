@@ -9,24 +9,22 @@ class Medecin extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'dr_nom',
-        'dr_prenom',
-        'dr_genre',
-        'dr_dateNaissance',
-        'dr_telephone',
-        'dr_login',
-        'dr_password',
-        'jourService',
-        'heureDebut',
-        'heureDecente',
-        'profil_image',
-        'disponibilite',
-        'service_id',
-    ];
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function jourDeService()
+    {
+        return $this->belongsTo(JourDeService::class);
+    }
 
     public function service()
     {
         return $this->belongsTo(Service::class);
+    }
+    public function rendezvous()
+    {
+        return $this->hasMany(Rendezvous::class);
     }
 }

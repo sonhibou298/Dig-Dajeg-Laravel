@@ -15,18 +15,11 @@ class TarifController extends Controller
      */
     public function index()
     {
-        //
+        $tarif = Tarif::all();
+        return response()->json($tarif);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +29,15 @@ class TarifController extends Controller
      */
     public function store(StoreTarifRequest $request)
     {
-        //
+        $fields = $request->validate([
+            'coutConsultation' => 'required|int'
+        ]);
+        $tarif = Tarif::create([
+            'coutConsultation' => $fields['coutConsultation']
+        ]);
+        return response()->json([
+            'Success' => 'Tarif inséré avec Succès'
+        ]);
     }
 
     /**
@@ -45,21 +46,13 @@ class TarifController extends Controller
      * @param  \App\Models\Tarif  $tarif
      * @return \Illuminate\Http\Response
      */
-    public function show(Tarif $tarif)
+    public function show(Tarif $tarif, $id)
     {
-        //
+        $tarif = Tarif::find($id);
+        return response()->json($tarif);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Tarif  $tarif
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Tarif $tarif)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -68,9 +61,14 @@ class TarifController extends Controller
      * @param  \App\Models\Tarif  $tarif
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTarifRequest $request, Tarif $tarif)
+    public function update(UpdateTarifRequest $request, Tarif $tarif, $id)
     {
-        //
+        $tarif = Tarif::find($id);
+        $tarif->update($request->all());
+        return response()->json([
+            'Success' => 'Tarif modifié avec Succès'
+        ]);
+
     }
 
     /**
@@ -79,8 +77,12 @@ class TarifController extends Controller
      * @param  \App\Models\Tarif  $tarif
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tarif $tarif)
+    public function destroy(Tarif $tarif, $id)
     {
-        //
+        $tarif = Tarif::find($id);
+        $tarif->delete();
+        return response()->json([
+            'Success' => 'Tarif inséré avec Succès'
+        ]);
     }
 }

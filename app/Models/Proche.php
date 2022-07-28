@@ -9,17 +9,13 @@ class Proche extends Model
 {
     use HasFactory;
 
-
-    protected $fillable = [
-        'nomProche',
-        'prenomProche',
-        'genre',
-        'dateNaissance',
-        'patient_id'
-    ];
-
     public function patient()
     {
         return $this->belongsTo(Patient::class);
+    }
+
+    public function rendezvous()
+    {
+        return $this->hasMany(Rendezvous::class);
     }
 }

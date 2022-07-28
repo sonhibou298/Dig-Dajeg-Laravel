@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Patient;
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class PatientController extends Controller
 {
@@ -15,18 +17,11 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
+        $result = DB::select("SELECT nom, prenom, genre, dateNaissance, status FROM users WHERE role_id = 3");
+        return response()->json($result);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +31,15 @@ class PatientController extends Controller
      */
     public function store(StorePatientRequest $request)
     {
-        //
+        $getId = User::where('role_id', '=', '3')->latest()->first()->id;
+//        $getId = DB::select("SELECT id from users WHERE role_id = '3' ORDER BY id DESC LiMIT 1");
+        $patient = Patient::create([
+            'adresse' => $request->input('adresse'),
+            'user_id' => $getId,
+        ]);
+        return response()->json([
+            'Success' => 'Success'
+        ]);
     }
 
     /**
@@ -47,19 +50,10 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Patient  $patient
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Patient $patient)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -68,9 +62,13 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePatientRequest $request, Patient $patient)
+    public function update(UpdatePatientRequest $request, Patient $patient, $id)
     {
-        //
+        $patient = Patient::find($id);
+        $patient->update($request->all());
+        return response()->json([
+            'message' => 'Patient Modifié'
+        ]);
     }
 
     /**
@@ -79,8 +77,18 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy(Patient $patient, $id)
     {
-        //
+        $patient = Patient::find($id);
+        $patient->delete();
+        return response()->json([
+            'message' => 'Patient supprimé'
+        ]);
+
+    }
+    public function getIdLastUser()
+    {
+        $getId = User::where('role_id', '=', '3')->latest()->first()->id;
+        return response()->json($getId);
     }
 }

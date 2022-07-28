@@ -13,7 +13,7 @@ class StoreMedecinRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

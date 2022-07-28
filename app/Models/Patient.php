@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['adresse', 'user_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function proches()
+    {
+        return $this->hasMany(Proche::class);
+    }
+
+    public function rendezvous()
+    {
+        return $this->hasMany(Rendezvous::class);
+    }
 }
