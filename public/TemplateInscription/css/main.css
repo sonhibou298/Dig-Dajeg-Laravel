@@ -170,19 +170,20 @@ h6 {
 }
 
 .bg-gra-01 {
-  background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
-  background: -webkit-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);
-  background: -moz-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);
-  background: -o-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);
-  background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
+  /*background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));*/
+  /*background: -webkit-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);*/
+  /*background: -moz-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);*/
+  /*background: -o-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);*/
+  /*background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);*/
 }
 
 .bg-gra-02 {
-  background: -webkit-gradient(linear, left bottom, right top, from(#fc2c77), to(#6c4079));
-  background: -webkit-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);
-  background: -moz-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);
-  background: -o-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);
-  background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);
+  /*background: -webkit-gradient(linear, left bottom, right top, from(#fc2c77), to(#6c4079));*/
+  /*background: -webkit-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);*/
+  /*background: -moz-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);*/
+  /*background: -o-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);*/
+  /*background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);*/
+    background: #16a085;
 }
 
 /* ==========================================================================
@@ -279,19 +280,25 @@ h6 {
 }
 
 .btn--green {
-  background: #57b846;
+  background: #16a085;
+
 }
 
 .btn--green:hover {
-  background: #4dae3c;
+  background: #16a085;
 }
 
 .btn--blue {
-  background: #4272d7;
+
+    background: #16a085;
+    color: #FFFFFF;
+
 }
 
 .btn--blue:hover {
-  background: #3868cd;
+    background: #FFFFFF;
+    color: #1b1e21;
+    border: 1px solid #16a085 ;
 }
 
 /* ==========================================================================
@@ -452,7 +459,7 @@ input {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  background: #57b846;
+  background: #16a085;
 }
 
 .checkmark {
@@ -618,6 +625,7 @@ input {
   -moz-border-radius: 3px;
   border-radius: 3px;
   background: #fff;
+    margin-top: -90px;
 }
 
 .card-4 {

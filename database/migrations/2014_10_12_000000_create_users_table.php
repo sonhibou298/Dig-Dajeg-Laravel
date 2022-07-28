@@ -23,8 +23,8 @@ return new class extends Migration
             $table->date('dateNaissance');
             $table->string('email')->unique();
             $table->string('password');
-            $table->boolean('status');
-            $table->string('profil')->default('default.png');
+            $table->boolean('status')->default(1);
+            $table->string('profil')->nullable();
             $table->foreignId('role_id')->constrained()->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();

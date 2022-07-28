@@ -81,6 +81,12 @@ Route::post('medecin', [MedecinController::class, 'store'])->name('addMedecin');
 /*--------------------------------------------------------------------------------------
                                     Route Patient
 ---------------------------------------------------------------------------------------*/
+Route::get('login', function (){
+    return view('login');
+})->name('loginPatient');
+Route::get('/inscription', function (){
+    return view('patient.inscription');
+})->name('inscription');
 Route::get('patients', [PatientController::class, 'index'])->name('listPatients');
 Route::put('patient/{id}', [UserController::class, 'update'])->name('updatePatient');
 Route::get('patient/{id}', [UserController::class, 'show'])->name('infoPatient');

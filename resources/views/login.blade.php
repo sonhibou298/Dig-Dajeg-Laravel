@@ -76,7 +76,7 @@
                     </div>
 
                     <div>
-                        <a href="#" class="txt3">
+                        <a href={{route('inscription')}} class="txt3">
                           Creer un compte
                         </a>
                     </div>

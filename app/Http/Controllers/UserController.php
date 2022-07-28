@@ -36,10 +36,10 @@ class UserController extends Controller
             'prenom' => $request->input('prenom'),
             'genre' => $request->input('genre'),
             'telephone' => $request->input('telephone'),
+            'adresse' => $request->input('adresse'),
             'dateNaissance' => $request->input('dateNaissance'),
             'email' => $request->input('email'),
             'password' =>Hash::make($request->input('email')),
-            'status' => $request->input('status'),
             'profil' => $request->input('profil'),
             'role_id' => $request->input('role_id'),
         ]);
