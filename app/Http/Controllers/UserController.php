@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patient;
 use App\Models\User;
 use http\Env\Response;
 use Illuminate\Http\Request;
@@ -31,21 +32,38 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $fields = $request->validate([
+            'nom' => ['required', 'min:2'],
+            'prenom' => ['required', 'min:2'],
+            'telephone' => ['required', 'numeric', 'min:9'],
+            'adresse' => ['required', 'min:2'],
+            'genre' => ['required'],
+            'dateNaissance' => ['required'],
+            'email' => ['email:rfc,dns'],
+            'password' => ['required', 'min:4'],
+        ]);
+
         $user = User::create([
-            'nom' => $request->input('nom'),
-            'prenom' => $request->input('prenom'),
-            'genre' => $request->input('genre'),
-            'telephone' => $request->input('telephone'),
-            'adresse' => $request->input('adresse'),
-            'dateNaissance' => $request->input('dateNaissance'),
-            'email' => $request->input('email'),
-            'password' =>Hash::make($request->input('email')),
+            'nom' => $fields['nom'],
+            'prenom' => $fields['prenom'],
+            'genre' => $fields['genre'],
+            'telephone' => $fields['telephone'],
+            'adresse' => $fields['adresse'],
+            'dateNaissance' => $fields['dateNaissance'],
+            'email' => $fields['email'],
+            'password' =>Hash::make($fields['password']),
             'profil' => $request->input('profil'),
             'role_id' => $request->input('role_id'),
         ]);
-        return response()->json([
-            'success' => 'User inséré'
-        ]);
+
+        if ($request->input('role_id') == 3)
+        {
+            $getId = User::where('role_id', '=', '3')->latest()->first()->id;
+            $patient = Patient::create([
+                'user_id' => $getId,
+            ]);
+        }
+        return redirect('login')->with('message', 'Success');
 
     }
 

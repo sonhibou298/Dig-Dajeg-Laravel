@@ -643,6 +643,14 @@ input {
   padding-bottom: 65px;
 }
 
+.input-required{
+    color : #16a085;
+}
+.alert-message{
+    background: #16a085;
+    color: #FFFFFF;
+}
+
 @media (max-width: 767px) {
   .card-4 .card-body {
     padding: 50px 40px;

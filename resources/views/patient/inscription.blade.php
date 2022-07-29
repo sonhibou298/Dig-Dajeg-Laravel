@@ -31,19 +31,34 @@
         <div class="card card-4">
             <div class="card-body">
                 <h2 class="title">Inscription</h2>
+
                 <form method="POST" action={{route('addUser')}}>
                     @csrf
                     <div class="row row-space">
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">Nom</label>
-                                <input class="input--style-4" type="text" name="nom">
+                                <input class="input--style-4" type="text" name="nom" data-validate = "Nom is required">
+                                @if($errors->any())
+                                    @foreach($errors->get('nom') as $error)
+                                        <div class="input-required">
+                                            {{$error}}
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">Prenom</label>
-                                <input class="input--style-4" type="text" name="prenom">
+                                <input class="input--style-4" type="text" name="prenom" data-validate = "Password is required">
+                                @if($errors->any())
+                                    @foreach($errors->get('prenom') as $error)
+                                        <div class="input-required">
+                                            {{$error}}
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -78,6 +93,13 @@
                             <div class="input-group">
                                 <label class="label">Telephone</label>
                                 <input class="input--style-4" type="string" name="telephone">
+                                @if($errors->any())
+                                    @foreach($errors->get('telephone') as $error)
+                                        <div class="input-required">
+                                            {{$error}}
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                         <div class="col-2">
@@ -93,6 +115,13 @@
                             <div class="input-group">
                                 <label class="label">Email</label>
                                 <input class="input--style-4" type="email" name="email">
+                                @if($errors->any())
+                                    @foreach($errors->get('email') as $error)
+                                        <div class="input-required">
+                                            {{$error}}
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                         <div class="col-2">

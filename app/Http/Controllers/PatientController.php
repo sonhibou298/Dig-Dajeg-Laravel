@@ -34,7 +34,6 @@ class PatientController extends Controller
         $getId = User::where('role_id', '=', '3')->latest()->first()->id;
 //        $getId = DB::select("SELECT id from users WHERE role_id = '3' ORDER BY id DESC LiMIT 1");
         $patient = Patient::create([
-            'adresse' => $request->input('adresse'),
             'user_id' => $getId,
         ]);
         return response()->json([
