@@ -77,6 +77,7 @@ Route::put('medecin/{id}', [MedecinController::class, 'update'])->name('updateSe
 Route::delete('medecin/{id}', [MedecinController::class, 'destroy'])->name('deleteMedecin');
 Route::get('medecin/{id}', [MedecinController::class, 'show'])->name('infoMedecin');
 Route::post('medecin', [MedecinController::class, 'store'])->name('addMedecin');
+Route::get('test', [MedecinController::class, 'infoMedecin'])->name('test');
 
 /*--------------------------------------------------------------------------------------
                                     Route Patient
@@ -87,6 +88,9 @@ Route::get('login', function (){
 Route::get('/inscription', function (){
     return view('patient.inscription');
 })->name('inscription');
+Route::get('homePatient', function (){
+    return view('patient.home');
+})->name('homePatient');
 Route::get('patients', [PatientController::class, 'index'])->name('listPatients');
 Route::put('patient/{id}', [UserController::class, 'update'])->name('updatePatient');
 Route::get('patient/{id}', [UserController::class, 'show'])->name('infoPatient');

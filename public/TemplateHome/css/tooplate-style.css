@@ -15,7 +15,7 @@ body {
 
 
 /*---------------------------------------
-     TYPOGRAPHY              
+     TYPOGRAPHY
   -----------------------------------------*/
 
 h1,
@@ -76,7 +76,7 @@ p {
 
 
 /*---------------------------------------
-     GENERAL               
+     GENERAL
   -----------------------------------------*/
 
 html {
@@ -222,7 +222,7 @@ a:focus {
 
 
 /*---------------------------------------
-       PRE LOADER              
+       PRE LOADER
   -----------------------------------------*/
 
 .preloader {
@@ -275,7 +275,7 @@ a:focus {
 
 
 /*---------------------------------------
-      MENU              
+      MENU
   -----------------------------------------*/
 
 header {
@@ -321,10 +321,10 @@ header span i {
 
 
 /*---------------------------------------
-      MENU              
+      MENU
   -----------------------------------------*/
 
-.navbar-default {
+.navbar-expand-lg {
     background: #ffffff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .075);
     border: none;
@@ -332,40 +332,47 @@ header span i {
     padding: 10px;
 }
 
-.navbar-default .navbar-brand {
+.navbar-expand-lg .navbar-brand {
     color: #393939;
     font-weight: 500;
 }
 
-.navbar-default .navbar-brand .fa {
+.navbar-expand-lg .navbar-brand .fa {
     color: #16a085;
 }
-
-.navbar-default .navbar-nav li.appointment-btn {
-    margin: 3px 0 0 10px;
+.navbar-expand-lg .navbar-nav{
+    margin-left: 30%;
 }
 
-.navbar-default .navbar-nav li.appointment-btn a {
+.navbar-expand-lg .navbar-nav li .appointment-btn {
+    margin: 3px 4px 0 12px;
     background: #16a085;
     border-radius: 3px;
     color: #ffffff;
     font-weight: 600;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    
+    padding-top: 10px;
+    padding-bottom: 11px;
+    padding-right: 30px;
+    padding-left: 25px;
 }
 
-.navbar-default .navbar-nav li.appointment-btn a:hover {
+.navbar-expand-lg .navbar-nav li .appointment-btn:hover {
     background: #ffffff;
     color: #16a085 !important;
 }
 
-.navbar-default .navbar-nav li a {
+.navbar-expand-lg .navbar-nav li a {
     color: #555555;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
-    padding-right: 20px;
-    padding-left: 20px;
+    -webkit-transition: all ease-in-out 0.4s;
+    transition: all ease-in-out 0.4s;
+}
+
+.navbar-expand-lg .navbar-nav li a:hover {
+    color: #16a085;
+    font-size: 14px;
+    font-weight: 500;
     -webkit-transition: all ease-in-out 0.4s;
     transition: all ease-in-out 0.4s;
 }
@@ -428,7 +435,7 @@ header span i {
 
 
 /*---------------------------------------
-      HOME              
+      HOME
   -----------------------------------------*/
 
 #home h1 {
@@ -487,7 +494,7 @@ header span i {
     cursor: e-resize;
 }
 
-.slider .item { 
+.slider .item {
     background-position: inherit;
     background-repeat: no-repeat;
     background-attachment: local;
@@ -509,7 +516,7 @@ header span i {
 
 
 /*---------------------------------------
-      ABOUT              
+      ABOUT
   -----------------------------------------*/
 
 #about {
@@ -544,7 +551,7 @@ header span i {
 
 
 /*---------------------------------------
-      TEAM MEMBERS              
+      TEAM MEMBERS
   -----------------------------------------*/
 
 .team-thumb {
@@ -610,7 +617,7 @@ header span i {
 
 
 /*---------------------------------------
-     SERVICE              
+     SERVICE
   -----------------------------------------*/
 
 #service {
@@ -643,7 +650,7 @@ header span i {
 
 
 /*---------------------------------------
-      NEWS             
+      NEWS
   -----------------------------------------*/
 
 #news,
@@ -792,7 +799,7 @@ header span i {
 
 
 /*---------------------------------------
-      APPOINTMENT             
+      APPOINTMENT
   -----------------------------------------*/
 
 #appointment {
@@ -834,7 +841,7 @@ header span i {
 
 
 /*---------------------------------------
-     FOOTER              
+     FOOTER
   -----------------------------------------*/
 
 footer {
@@ -953,7 +960,7 @@ footer a:hover {
 
 
 /*---------------------------------------
-     SOCIAL ICON              
+     SOCIAL ICON
   -----------------------------------------*/
 
 .social-icon {
@@ -987,7 +994,7 @@ footer a:hover {
 
 
 /*---------------------------------------
-     RESPONSIVE STYLES              
+     RESPONSIVE STYLES
   -----------------------------------------*/
 
 @media only screen and (max-width: 1200px) {
@@ -1011,7 +1018,7 @@ footer a:hover {
     header span.email-icon {
         padding-top: 0;
     }
-    .navbar-default .navbar-nav li a {
+    .navbar-expand-lg .navbar-nav li a {
         padding-right: 15px;
         padding-left: 15px;
     }
@@ -1035,14 +1042,14 @@ footer a:hover {
 }
 
 @media only screen and (max-width: 767px) {
-    .navbar-default .navbar-collapse,
-    .navbar-default .navbar-form {
+    .navbar-expand-lg .navbar-collapse,
+    .navbar-expand-lg .navbar-form {
         border-color: transparent;
     }
-    .navbar-default .navbar-nav li.appointment-btn {
+    .navbar-expand-lg .navbar-nav li.appointment-btn {
         margin-left: 15px;
     }
-    .navbar-default .navbar-nav li a {
+    .navbar-expand-lg .navbar-nav li a {
         display: inline-block;
         padding-top: 8px;
         padding-bottom: 8px;
@@ -1087,4 +1094,111 @@ footer a:hover {
         font-size: 11px;
         letter-spacing: 1px;
     }
+}
+
+/*Code Sonhibou*/
+
+.baniere-image{
+    width: 1551px;
+    height: 482px;
+    position: relative;
+}
+
+.baniere-image img{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+.baniere-image .trouver{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+.baniere-image .trouver h3{
+    margin-top: 60px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+}
+.baniere-image form{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.form-search {
+    margin-top: 100px;
+}
+.form-search .row{
+    margin-left: 100px;
+}
+ .form-search input{
+     height: 60px;
+     font-size: 13px;
+ }
+ .form-search button{
+     background: #16a085;
+     border: 1px solid #16a085;
+     color: #FFFFFF;
+     height: 60px;
+     width: 180px;
+     border-radius: 10px;
+ }
+.form-search button:hover{
+    background: #FFFFFF;
+    border: 2px solid #16a085;
+    color: #16a085;
+    height: 60px;
+    width: 180px;
+    border-radius: 10px;
+}
+
+/*---------------------------Services----------------------*/
+.services {
+    margin-left: 50px;
+    margin-top: 50px;
+}
+.services .row{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.services .card{
+    border: 1px solid #16a085;
+    width: 90%;
+    height: 300px;
+    gap: 2px;
+}
+.services .card:hover{
+    border: 1px solid #16a085;
+    width: 90%;
+    height: 300px;
+    background: #16a085;
+    color: #FFFFFF;
+}
+.services .card-block{
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+.services .card-block h4{
+    margin-top: 30px;
+
+}
+
+.ressenser .card{
+    margin-left: 100px;
+    width: 25rem;
+    border: 1px solid #16a085;
+}
+.ressenser .card-title {
+    color: #16a085;
+    text-align: center;
+}
+
+.ressenser .card-text{
+
 }

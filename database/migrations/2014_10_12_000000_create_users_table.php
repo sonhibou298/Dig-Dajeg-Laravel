@@ -23,7 +23,7 @@ return new class extends Migration
             $table->date('dateNaissance');
             $table->string('email')->unique();
             $table->string('password');
-            $table->boolean('status')->default(1);
+            $table->enum('status', ['Actif', 'Inactif'])->default('Actif');
             $table->string('profil')->nullable();
             $table->foreignId('role_id')->constrained()->onDelete('cascade');
             $table->rememberToken();

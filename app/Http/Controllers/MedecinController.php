@@ -17,8 +17,8 @@ class MedecinController extends Controller
      */
     public function index()
     {
-        $result =DB::select("SELECT nom, prenom, genre, dateNaissance, status FROM users WHERE role_id = 2");
-        return response()->json($result);
+        $medecins = Medecin::all();
+        return view('medecin.listMedecin', compact('medecins'));
     }
 
     /**
@@ -93,5 +93,9 @@ class MedecinController extends Controller
         return response()->json([
             'Message'=>'Medecein supprimé'
         ]);
+    }
+    public function infoMedecin(){
+        $medecin = Medecin::all();
+        return view('medecin.listMedecin', compact('medecin'));
     }
 }

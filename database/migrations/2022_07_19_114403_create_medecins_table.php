@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('disponible');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('jour_de_service_id')->constrained()->onDelete('cascade');
+            $table->foreignId('service_id')->constrained();
             $table->timestamps();
         });
     }
