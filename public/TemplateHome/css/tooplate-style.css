@@ -1099,7 +1099,6 @@ footer a:hover {
 /*Code Sonhibou*/
 
 .baniere-image{
-    width: 1551px;
     height: 482px;
     position: relative;
 }
@@ -1244,4 +1243,12 @@ footer a:hover {
     color: #FFFFFF;
 }
 
+.table-rv{
+    margin-top: 50px;
+    overflow: scroll;
+}
+.table-rv .table{
+    margin-right: 20px;
+    margin-left: 20px;
+}
 

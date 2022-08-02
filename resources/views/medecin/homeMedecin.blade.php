@@ -84,10 +84,10 @@ http://www.tooplate.com/view/2098-health
                     <div class="card card-stats mb-4 mb-xl-0 shadow">
                         <div class="card-body">
                                 <div class="col">
-                                    <p class="h2 font-weight-bold mb-0 text-align-center">30</p>
+                                    <p class="h2 font-weight-bold mb-0 text-align-center">{{$rv}}</p>
                                 </div>
                             <p class="mt-3 mb-0 text-muted text-sm text-align-center">
-                                <span class="text-nowrap">Since last month</span>
+                                <span class="text-nowrap">Total Rendez-vous</span>
                             </p>
                         </div>
                     </div>
@@ -96,11 +96,11 @@ http://www.tooplate.com/view/2098-health
                     <div class="card card-stats mb-4 mb-xl-0 shadow">
                         <div class="card-body">
                             <div class="row">
-                                    <p class="h2 font-weight-bold mb-0 text-align-center">18</p>
+                                    <p class="h2 font-weight-bold mb-0 text-align-center">{{$rva}}</p>
                                 </div>
 
                             <p class="mt-3 mb-0 text-muted text-sm text-align-center">
-                                <span class="text-nowrap">Since last week</span>
+                                <span class="text-nowrap">Rendez-vous approuvés</span>
                             </p>
                         </div>
                     </div>
@@ -109,10 +109,10 @@ http://www.tooplate.com/view/2098-health
                     <div class="card card-stats mb-4 mb-xl-0 shadow">
                         <div class="card-body">
                                 <div class="col">
-                                    <p class="h2 font-weight-bold mb-0 text-align-center">8</p>
+                                    <p class="h2 font-weight-bold mb-0 text-align-center">{{$rve}}</p>
                                 </div>
                             <p class="mt-3 mb-0 text-muted text-sm text-align-center">
-                                <span class="text-nowrap">Since yesterday</span>
+                                <span class="text-nowrap">Rendez-vous en attente</span>
                             </p>
                         </div>
                     </div>
@@ -121,10 +121,10 @@ http://www.tooplate.com/view/2098-health
                     <div class="card card-stats mb-4 mb-xl-0 shadow">
                         <div class="card-body">
                                 <div class="col">
-                                    <p class="h2 font-weight-bold mb-0 text-align-center">4</p>
+                                    <p class="h2 font-weight-bold mb-0 text-align-center">{{$rvr}}</p>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm text-align-center">
-                                <span class="text-nowrap">Since last month</span>
+                                <span class="text-nowrap">Rendez-vous annulés</span>
                             </p>
                         </div>
                     </div>
@@ -133,8 +133,50 @@ http://www.tooplate.com/view/2098-health
     </div>
 </section>
 
-<section>
-
+<section class="table-rv">
+    <table class="table table-bordered">
+        <thead>
+        <tr class="text">
+            <th scope="col">#</th>
+            <th scope="col">Prenom & Nom</th>
+            <th scope="col">Date réservation</th>
+            <th scope="col">Date Rv</th>
+            <th scope="col">Heure Rv</th>
+            <th scope="col">Motif</th>
+            <th scope="col">Tarif</th>
+            <th scope="col">Proche</th>
+            <th scope="col">Payé</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
 </section>
 
 </body>

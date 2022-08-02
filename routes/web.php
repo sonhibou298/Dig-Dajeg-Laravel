@@ -68,9 +68,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 /*--------------------------------------------------------------------------------------
                                     Route Medecin
 ---------------------------------------------------------------------------------------*/
-Route::get('homeMedecin', function (){
-    return view('medecin.homeMedecin');
-})->name('homeMedecin');
+Route::get('homeMedecin', [MedecinController::class, 'statistique'])->name('homeMedecin');
 
 Route::get('medecins', [MedecinController::class, 'index'])->name('listMedecins');
 Route::put('medecin/{id}', [UserController::class, 'update'])->name('updateProfilMedecin');
