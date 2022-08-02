@@ -1199,6 +1199,49 @@ footer a:hover {
     text-align: center;
 }
 
-.ressenser .card-text{
-
+/*-------------------- Recherche Medecins --------------------------------*/
+.card-medecin .text-service{
+    color: #16a085;
 }
+.card-medecin .btn-rv{
+    background: #16a085;
+    border: 2px solid #16a085;
+    color: #FFFFFF;
+    height: 60px;
+    width: 180px;
+    border-radius: 10px;
+}
+.card-medecin .btn-rv:hover{
+    background: #FFFFFF;
+    border: 2px solid #16a085;
+    color: #16a085;
+    height: 60px;
+    width: 180px;
+    border-radius: 10px;
+}
+/*----------------------Home Patient-----------------------------*/
+.homeMedecin {
+    margin-top: 30px;
+}
+.homeMedecin .row{
+    margin-left: 60px;
+    margin-right: 60px;
+}
+.homeMedecin .card{
+    border: 1px solid #16a085;
+}
+.homeMedecin .card p span{
+    color: #1b1e21;
+}
+.homeMedecin .card:hover{
+  background: #16a085;
+    color: #FFFFFF;
+}
+.homeMedecin .card:hover p {
+    color: #FFFFFF;
+}
+.homeMedecin .card:hover p span{
+    color: #FFFFFF;
+}
+
+

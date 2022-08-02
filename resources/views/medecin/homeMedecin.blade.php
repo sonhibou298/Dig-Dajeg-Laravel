@@ -64,15 +64,7 @@ http://www.tooplate.com/view/2098-health
                 <li class="nav-item">
                     <a class="nav-link" href="#">Accueil</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href={{route('listMedecins')}}>Rechercher un medecin</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Mes rendez-vous</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">M.favoris</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="#">Mon compte</a>
                 </li>
@@ -84,29 +76,67 @@ http://www.tooplate.com/view/2098-health
     </div>
 </nav>
 
-<section class="card-medecin">
-    <div class="container">
-        <div class="row mb-3 mt-5">
-            @foreach($medecins as $medecin)
-            <div class="col-md-12 col-lg-12 col-sm-12 mt-2">
-                <div class="d-flex flex-row border rounded">
-                    <div class="p-0 w-25">
-
+<section class="homeMedecin">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row">
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0 shadow">
+                        <div class="card-body">
+                                <div class="col">
+                                    <p class="h2 font-weight-bold mb-0 text-align-center">30</p>
+                                </div>
+                            <p class="mt-3 mb-0 text-muted text-sm text-align-center">
+                                <span class="text-nowrap">Since last month</span>
+                            </p>
+                        </div>
                     </div>
-                    <div class="pl-3 pt-2 pr-2 pb-2 w-75 border-left">
-                        <h4 class="text">Dr. {{$medecin->User->prenom}}  {{$medecin->User->nom}}</h4>
-                        <h5 class="text-service">{{$medecin->Service->nomService}}</h5>
-                        <h6>{{$medecin->JourDeService->jourDisponible}}</h6>
-                        <h6>{{$medecin->JourDeService->heureDebut}}</h6>
-                        <h6>{{$medecin->JourDeService->heureDecente}}</h6>
-                        <button class="btn-rv">Prendre un rendez-vous</button>
-{{--                        <p class="text-right m-0"><a href="#" class="btn btn-success"> View Profile</a></p>--}}
+                </div>
+                <div class="col-xl-3 col-lg-6 col-sm-12">
+                    <div class="card card-stats mb-4 mb-xl-0 shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                    <p class="h2 font-weight-bold mb-0 text-align-center">18</p>
+                                </div>
+
+                            <p class="mt-3 mb-0 text-muted text-sm text-align-center">
+                                <span class="text-nowrap">Since last week</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0 shadow">
+                        <div class="card-body">
+                                <div class="col">
+                                    <p class="h2 font-weight-bold mb-0 text-align-center">8</p>
+                                </div>
+                            <p class="mt-3 mb-0 text-muted text-sm text-align-center">
+                                <span class="text-nowrap">Since yesterday</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0 shadow">
+                        <div class="card-body">
+                                <div class="col">
+                                    <p class="h2 font-weight-bold mb-0 text-align-center">4</p>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm text-align-center">
+                                <span class="text-nowrap">Since last month</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            @endforeach
     </div>
 </section>
+
+<section>
+
+</section>
+
 </body>
 <script src="./TemplateHome/js/jquery.js"></script>
 <script src="./TemplateHome/js/bootstrap.min.js"></script>
@@ -117,5 +147,6 @@ http://www.tooplate.com/view/2098-health
 <script src="./TemplateHome/js/owl.carousel.min.js"></script>
 <script src="./TemplateHome/js/custom.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 
 </html>

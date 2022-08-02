@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MedecinController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProcheController;
@@ -9,8 +8,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TarifController;
 use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,24 +21,22 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
+Route::get('/auth', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('home');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+
 Route::get('/', function () {
     return view('home');
 });
 
 
-
-
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
 
 /*--------------------------------------------------------------------------------------
@@ -71,6 +68,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 /*--------------------------------------------------------------------------------------
                                     Route Medecin
 ---------------------------------------------------------------------------------------*/
+Route::get('homeMedecin', function (){
+    return view('medecin.homeMedecin');
+})->name('homeMedecin');
+
 Route::get('medecins', [MedecinController::class, 'index'])->name('listMedecins');
 Route::put('medecin/{id}', [UserController::class, 'update'])->name('updateProfilMedecin');
 Route::put('medecin/{id}', [MedecinController::class, 'update'])->name('updateServiceMedecin');
@@ -85,9 +86,11 @@ Route::get('test', [MedecinController::class, 'infoMedecin'])->name('test');
 Route::get('login', function (){
     return view('login');
 })->name('loginPatient');
+
 Route::get('/inscription', function (){
     return view('patient.inscription');
 })->name('inscription');
+
 Route::get('homePatient', function (){
     return view('patient.home');
 })->name('homePatient');
@@ -133,4 +136,3 @@ Route::get('rendezVous/{id}', [RendezvousController::class, 'show'])->name('info
 Route::get('rendezVous/{id}', [RendezvousController::class, 'destroy'])->name('deleteRendezVous');
 Route::put('rendezVous/{id}', [RendezvousController::class, 'update'])->name('updateRendezVous');
 Route::post('rendezVous', [RendezvousController::class, 'store'])->name('addRendezVous');
-

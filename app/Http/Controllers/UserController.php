@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Patient;
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -115,44 +117,34 @@ class UserController extends Controller
         return User::where('prenom', 'like' , '%'.$prenom.'%')->get();
     }
 
-    public function login(Request $request)
-    {
-        if(!Auth::attempt($request->only('email', 'password')))
-        {
-            return response([
-                'message'=>'Login ou mot de passe incorrect'
-            ], \Symfony\Component\HttpFoundation\Response::HTTP_UNAUTHORIZED);
-        }
-
-        $user = Auth::user();
-        return response()->json([
-            'message' => 'Connexion reussie'
-        ]);
-    }
-
 //    public function login(Request $request)
 //    {
-//        $fields = $request->validate([
-//           'email' => 'required|string',
-//            'password' => 'required|string'
-//        ]);
-//
-//        $user = User::where('email', $fields['email'])->first();
-//
-//        if (!$user || !Hash::check($fields['password'], $user->password))
+//        if(!Auth::attempt($request->only('email', 'password')))
 //        {
 //            return response([
-//                'message' => 'Connected'
-//            ], 401);
+//                'message'=>'Login ou mot de passe incorrect'
+//            ], \Symfony\Component\HttpFoundation\Response::HTTP_UNAUTHORIZED);
 //        }
 //
-//        $token = $user->createToken('myapptoken')->plainTextToken;
-//        $response = [
-//            'user'=>$user,
-//            'token' => $token
-//        ];
-//        return response($response, 201);
+//        $user = Auth::user();
+//        return response()->json([
+//            'message' => 'Connexion reussie'
+//        ]);
 //    }
+
+    /**
+     * Handle an incoming authentication request.
+     *
+     * @param  \App\Http\Requests\Auth\LoginRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function login(LoginRequest $request){
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
 
 //    public function login(Request $request)
 //    {
