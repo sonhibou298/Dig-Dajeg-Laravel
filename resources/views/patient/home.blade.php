@@ -76,8 +76,9 @@ http://www.tooplate.com/view/2098-health
                 <li class="nav-item">
                     <a class="nav-link" href="#">Mon compte</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="appointment-btn" href="#">Deconnexion</a>
+                    <a class="appointment-btn" href={{route('logout')}}>Deconnexion</a>
                 </li>
             </ul>
         </div>
@@ -89,16 +90,17 @@ http://www.tooplate.com/view/2098-health
     <img class="image" src="./TemplateHome/images/imgrv.jpg"/>
     <div class="trouver">
         <h3>Trouvez un medecin et prenez un rendez-vous</h3>
-       <form class="form-search">
+       <form class="form-search" method="post" action={{route('search')}}>
+           @csrf
            <div class="row">
                <div class="col">
                    <input type="text" class="form-control" placeholder="Recherche par medecin" aria-label="Recherche par medecin">
                </div>
                <div class="col">
-                   <input type="text" class="form-control" placeholder="Recherche par spécialité" aria-label="Recherche par spécialité">
+                   <input type="text" class="form-control" name="specialite" placeholder="Recherche par spécialité" aria-label="Recherche par spécialité">
                </div>
                <div class="col">
-                   <button type="button" class="btn-search">Rechercher</button>
+                   <button type="submit" class="btn-search">Rechercher</button>
                </div>
            </div>
        </form>
@@ -176,7 +178,7 @@ http://www.tooplate.com/view/2098-health
     <div class="row">
         <div class="col-md-6 col-sm-12 col-lg-6">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body col-sm-12">
                     <h5 class="card-title">Patient</h5>
                     <p class="card-text">
                         <ul>
@@ -204,5 +206,6 @@ http://www.tooplate.com/view/2098-health
 <script src="./TemplateHome/js/owl.carousel.min.js"></script>
 <script src="./TemplateHome/js/custom.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 </body>
 </html>

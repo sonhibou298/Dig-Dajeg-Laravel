@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -132,19 +133,14 @@ class UserController extends Controller
 //        ]);
 //    }
 
-    /**
-     * Handle an incoming authentication request.
-     *
-     * @param  \App\Http\Requests\Auth\LoginRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function login(LoginRequest $request){
-        $request->authenticate();
 
-        $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
-    }
+//    public function login(LoginRequest $request){
+//        $request->authenticate();
+//
+//        $request->session()->regenerate();
+//
+//        return redirect()->intended(RouteServiceProvider::HOME);
+//    }
 
 //    public function login(Request $request)
 //    {

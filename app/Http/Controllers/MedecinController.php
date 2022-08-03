@@ -7,6 +7,7 @@ use App\Http\Requests\StoreMedecinRequest;
 use App\Http\Requests\UpdateMedecinRequest;
 use App\Models\Rendezvous;
 use App\Models\User;
+use http\Env\Request;
 use Illuminate\Support\Facades\DB;
 
 class MedecinController extends Controller
@@ -110,8 +111,11 @@ class MedecinController extends Controller
         return view('medecin.homeMedecin', compact('rendezvous','rv','rva', 'rve', 'rvr', 'users'));
     }
 
-    public function search($prenom)
+    public function search()
     {
-        return User::where('prenom', 'like' , '%'.$prenom.'%')->get();
+
+        $search= Medecin::where('service_id', 'like' , '%'.$result.'%')->get();
+
+        return dd($search);
     }
 }

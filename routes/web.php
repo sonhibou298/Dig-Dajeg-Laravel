@@ -8,6 +8,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TarifController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,19 +22,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/auth', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('home');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
-
-
+//Route::get('/auth', function () {
+//    return view('welcome');
+//});
+//
+//Route::get('/dashboard', function () {
+//    return view('home');
+//})->middleware(['auth'])->name('dashboard');
+//
+//require __DIR__.'/auth.php';
+//
+//
 Route::get('/', function () {
-    return view('home');
+    return view('accueil');
 });
 
 
@@ -50,10 +51,10 @@ Route::put('role/{id}', [RoleController::class, 'update'])->name('updateRole');
 /*--------------------------------------------------------------------------------------
                                     Route User
 ---------------------------------------------------------------------------------------*/
-Route::post('login', [UserController::class, 'login'])->name('login');
-Route::get('login', function (){
-    return view('login');
-})->name('login');
+//Route::post('loginUser', [UserController::class, 'login'])->name('loginUser');
+//Route::get('loginUser', function (){
+//    return view('loginUser');
+//})->name('loginUser');
 Route::get('users', [UserController::class, 'index'])->name('listUsers');
 
 Route::post('user', [UserController::class, 'store'])->name('addUser');
@@ -68,7 +69,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 /*--------------------------------------------------------------------------------------
                                     Route Medecin
 ---------------------------------------------------------------------------------------*/
-Route::get('homeMedecin', [MedecinController::class, 'statistique'])->name('homeMedecin');
+Route::get('homeMedecin', [MedecinController::class, 'statistique'])->middleware(['auth'])->name('homeMedecin');
 
 Route::get('medecins', [MedecinController::class, 'index'])->name('listMedecins');
 Route::put('medecin/{id}', [UserController::class, 'update'])->name('updateProfilMedecin');
@@ -77,11 +78,12 @@ Route::delete('medecin/{id}', [MedecinController::class, 'destroy'])->name('dele
 Route::get('medecin/{id}', [MedecinController::class, 'show'])->name('infoMedecin');
 Route::post('medecin', [MedecinController::class, 'store'])->name('addMedecin');
 Route::get('test', [MedecinController::class, 'infoMedecin'])->name('test');
+Route::post('search/specialite', [MedecinController::class, 'search'])->name('search');
 
 /*--------------------------------------------------------------------------------------
                                     Route Patient
 ---------------------------------------------------------------------------------------*/
-Route::get('login', function (){
+Route::get('loginPatient', function (){
     return view('login');
 })->name('loginPatient');
 
@@ -92,6 +94,11 @@ Route::get('/inscription', function (){
 Route::get('homePatient', function (){
     return view('patient.home');
 })->name('homePatient');
+
+Route::get('rendezvous', function (){
+    return view('patient.rv');
+})->name('rendezvous');
+
 Route::get('patients', [PatientController::class, 'index'])->name('listPatients');
 Route::put('patient/{id}', [UserController::class, 'update'])->name('updatePatient');
 Route::get('patient/{id}', [UserController::class, 'show'])->name('infoPatient');
@@ -134,3 +141,11 @@ Route::get('rendezVous/{id}', [RendezvousController::class, 'show'])->name('info
 Route::get('rendezVous/{id}', [RendezvousController::class, 'destroy'])->name('deleteRendezVous');
 Route::put('rendezVous/{id}', [RendezvousController::class, 'update'])->name('updateRendezVous');
 Route::post('rendezVous', [RendezvousController::class, 'store'])->name('addRendezVous');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
