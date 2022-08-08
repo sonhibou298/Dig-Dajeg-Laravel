@@ -34,8 +34,9 @@
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
             <form class="login100-form validate-form flex-sb flex-w" method="post" action={{'login'}}>
                 @csrf
+
                 @if(session('message'))
-                    <div class="alert-message">
+                    <div class="alert alert-message">
                         {{session('message')}}
                     </div>
                 @endif
@@ -47,7 +48,13 @@
 						Email
 					</span>
                 <div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
-                    <input class="input100" type="text" name="email" >
+                    <input class="input100 @error('email') is-invalid @enderror" type="text" name="email"  name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                     <span class="focus-input100"></span>
                 </div>
 
@@ -58,7 +65,13 @@
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-                    <input class="input100" type="password" name="password" >
+                    <input class="input100 @error('password') is-invalid @enderror" type="password" name="password"  required autocomplete="current-password">
+
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                     <span class="focus-input100"></span>
                 </div>
 
@@ -92,6 +105,7 @@
                     <button class="login100-form-btn">
                         Se Connecter
                     </button>
+
                 </div>
 
             </form>

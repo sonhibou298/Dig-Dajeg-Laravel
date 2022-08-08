@@ -181,4 +181,13 @@ class UserController extends Controller
 //            ], 500);
 //        }
 //    }
+    public function deconnexion(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+
+    }
 }

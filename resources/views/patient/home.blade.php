@@ -78,8 +78,9 @@ http://www.tooplate.com/view/2098-health
                 </li>
 
                 <li class="nav-item">
-                    <a class="appointment-btn" href={{route('logout')}}>Deconnexion</a>
+                    <a class="appointment-btn" href={{route('deconnexion')}}>Deconnexion</a>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -90,14 +91,14 @@ http://www.tooplate.com/view/2098-health
     <img class="image" src="./TemplateHome/images/imgrv.jpg"/>
     <div class="trouver">
         <h3>Trouvez un medecin et prenez un rendez-vous</h3>
-       <form class="form-search" method="post" action={{route('search')}}>
+       <form class="form-search" method="get" action={{route('search')}}>
            @csrf
            <div class="row">
                <div class="col">
                    <input type="text" class="form-control" placeholder="Recherche par medecin" aria-label="Recherche par medecin">
                </div>
                <div class="col">
-                   <input type="text" class="form-control" name="specialite" placeholder="Recherche par spécialité" aria-label="Recherche par spécialité">
+                   <input type="text" class="form-control" name="term" placeholder="Recherche par spécialité" aria-label="Recherche par spécialité">
                </div>
                <div class="col">
                    <button type="submit" class="btn-search">Rechercher</button>

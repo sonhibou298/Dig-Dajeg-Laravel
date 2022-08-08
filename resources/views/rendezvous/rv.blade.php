@@ -3,12 +3,9 @@
 
 <head>
 
-    <title>Health-Center</title>
+    <title>Chifaa Dig-daje</title>
     <!--
 
-Template 2098 Health
-
-http://www.tooplate.com/view/2098-health
 
 -->
     <meta charset="UTF-8">
@@ -19,14 +16,14 @@ http://www.tooplate.com/view/2098-health
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     {{--    <link rel="stylesheet" href="./TemplateHome/css/bootstrap.min.css">--}}
-    <link rel="stylesheet" href="./TemplateHome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./TemplateHome/css/animate.css">
-    <link rel="stylesheet" href="./TemplateHome/css/owl.carousel.css">
-    <link rel="stylesheet" href="./TemplateHome/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/owl.carousel.css')}}">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/owl.theme.default.min.css')}}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- MAIN CSS -->
-    <link rel="stylesheet" href="./TemplateHome/css/tooplate-style.css">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/tooplate-style.css')}}">
 
 </head>
 
@@ -90,20 +87,49 @@ http://www.tooplate.com/view/2098-health
             Remplissez ce formulaire pour prendre un rendez-vous
         </div>
         <div class="card-body">
-            <form>
+            <form method="post" action={{route('addRendezVous')}}>
+                @csrf
                 <div class="form-group mt-2">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <label for="exampleInputEmail1">Date Rendez-vous</label>
+                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="dateRv">
+                    @if($errors->any())
+                        @foreach($errors->get('dateRv') as $error)
+                            <div class="input-required">
+                                {{$error}}
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
                 <div class="form-group mt-2">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="exampleInputPassword1">Heure</label>
+                    <input type="time" class="form-control" id="exampleInputPassword1" placeholder="Heure" name="heure">
+                    @if($errors->any())
+                        @foreach($errors->get('heure') as $error)
+                            <div class="input-required">
+                                {{$error}}
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <div class="form-group mt-2">
+                    <label for="exampleInputPassword1">Motif</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Motif consultation" name="motif">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-group mt-2">
+                    <label for="exampleInputPassword1">Paye</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="paye" name="paye" value="0" disabled>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="exampleInputPassword1">Tarif</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tarif" name="tarif" value={{$medecin->Service->Tarif->coutConsultation}} disabled>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="exampleInputPassword1">Medecin</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Medecin" name="medecin_id" value={{$medecin->id}}>
+
+                </div>
+
+                <button type="submit" class="btn-submit mt-3">Enregistrer</button>
             </form>
         </div>
     </div>
@@ -111,14 +137,14 @@ http://www.tooplate.com/view/2098-health
 
 </body>
 <!-- SCRIPTS -->
-<script src="./TemplateHome/js/jquery.js"></script>
-<script src="./TemplateHome/js/bootstrap.min.js"></script>
-<script src="./TemplateHome/js/jquery.sticky.js"></script>
-<script src="./TemplateHome/js/jquery.stellar.min.js"></script>
-<script src="./TemplateHome/js/wow.min.js"></script>
-<script src="./TemplateHome/js/smoothscroll.js"></script>
-<script src="./TemplateHome/js/owl.carousel.min.js"></script>
-<script src="./TemplateHome/js/custom.js"></script>
+<script src="{{asset('./TemplateHome/js/jquery.js')}}"></script>
+<script src="{{assert('./TemplateHome/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('./TemplateHome/js/jquery.sticky.js')}}"></script>
+<script src="{{asset('./TemplateHome/js/jquery.stellar.min.js')}}"></script>
+<script src="{{asset('./TemplateHome/js/wow.min.js')}}"></script>
+<script src="{{asset('./TemplateHome/js/smoothscroll.js')}}"></script>
+<script src="{{asset('./TemplateHome/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('./TemplateHome/js/custom.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </html>

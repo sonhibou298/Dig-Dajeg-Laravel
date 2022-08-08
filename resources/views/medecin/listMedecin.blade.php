@@ -99,7 +99,7 @@ http://www.tooplate.com/view/2098-health
                         <h6>{{$medecin->JourDeService->jourDisponible}}</h6>
                         <h6>{{$medecin->JourDeService->heureDebut}}</h6>
                         <h6>{{$medecin->JourDeService->heureDecente}}</h6>
-                        <a href={{route('rendezvous')}}><button class="btn-rv">Prendre un rendez-vous</button></a>
+                        <a href={{route('getMedecinId', $medecin->id)}}><button class="btn-rv">Prendre un rendez-vous</button></a>
 {{--                        <p class="text-right m-0"><a href="#" class="btn btn-success"> View Profile</a></p>--}}
                     </div>
                 </div>

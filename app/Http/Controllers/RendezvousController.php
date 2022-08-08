@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medecin;
 use App\Models\Rendezvous;
 use App\Http\Requests\StoreRendezvousRequest;
 use App\Http\Requests\UpdateRendezvousRequest;
+use App\Models\Service;
+use App\Models\Tarif;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class RendezvousController extends Controller
 {
@@ -15,8 +20,10 @@ class RendezvousController extends Controller
      */
     public function index()
     {
-        $rv = Rendezvous::all();
-        return response()->json($rv);
+        $medecin = Medecin::all();
+        $service = Service::all();
+        $tarif = Tarif::all();
+        return view('rendezvous.rv', compact('medecin', 'service', 'tarif'));
     }
 
 
@@ -30,27 +37,25 @@ class RendezvousController extends Controller
     public function store(StoreRendezvousRequest $request)
     {
         $fields = $request->validate([
-            'dateReservation' => 'required|date',
-            'dateRendezVous' => 'required|date',
-            'heureRendezVous' => 'required',
-            'motifConsultation' => 'required|string',
-            'tarif_id' => 'required|int',
-            'medecin_id' => 'required|int',
-            'patient_id' => 'required|int',
+//            'dateReservation' => ['required', 'date'],
+            'dateRendezVous' => ['required', 'date'],
+            'heureRendezVous' => ['require', 'time'],
+            'motifConsultation' => ['required', 'string'],
+            'tarif_id' => ['required', 'int'],
+            'medecin_id' => ['required', 'date'],
 
         ]);
         $rv = Rendezvous::create([
-            'dateReservation' => $fields['dateReservation'],
-            'dateRendezVous' => $fields['dateRendezVous'],
-            'heureRendezVous' => $fields['heureRendezVous'],
-            'motifConsultation' => $fields['motifConsultation'],
-            'etat' => $request->input('etat'),
+            'dateReservation' => Carbon::now(),
+            'dateRendezVous' => $fields['dateRv'],
+            'heureRendezVous' => $fields['heure'],
+            'motifConsultation' => $fields['motif'],
+            'etat' => 'En attente',
             'paye' => $request->input('paye'),
-            'tarif_id' => $fields['tarif_id'],
+            'tarif_id' => $fields['tarif'],
             'medecin_id' => $fields['medecin_id'],
-            'patient_id' => $fields['patient_id'],
             'proche_id' => $request->input('proche_id'),
-
+            'patient_id' => Auth::id(),
         ]);
         return response()->json($rv);
     }
@@ -99,4 +104,11 @@ class RendezvousController extends Controller
             'message' => 'Rendez-vous modifié'
         ]);
     }
+
+    public function getMedecinId(Medecin $medecin, $id)
+    {
+        $medecin = Medecin::find($id);
+        return view('rendezvous.rv', compact('medecin'));
+    }
+
 }

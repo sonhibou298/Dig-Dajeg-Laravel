@@ -65,6 +65,7 @@ Route::get('user/{id}', [UserController::class, 'show'])->name('showUser');
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('users/search/{prenom}', [UserController::class, 'search'])->name('search');
 });
+Route::get('deconnexion', [UserController::class, 'deconnexion'])->name('deconnexion');
 
 /*--------------------------------------------------------------------------------------
                                     Route Medecin
@@ -78,13 +79,13 @@ Route::delete('medecin/{id}', [MedecinController::class, 'destroy'])->name('dele
 Route::get('medecin/{id}', [MedecinController::class, 'show'])->name('infoMedecin');
 Route::post('medecin', [MedecinController::class, 'store'])->name('addMedecin');
 Route::get('test', [MedecinController::class, 'infoMedecin'])->name('test');
-Route::post('search/specialite', [MedecinController::class, 'search'])->name('search');
+Route::get('search', [MedecinController::class, 'search'])->name('search');
 
 /*--------------------------------------------------------------------------------------
                                     Route Patient
 ---------------------------------------------------------------------------------------*/
 Route::get('loginPatient', function (){
-    return view('login');
+    return view('loginUser');
 })->name('loginPatient');
 
 Route::get('/inscription', function (){
@@ -93,11 +94,9 @@ Route::get('/inscription', function (){
 
 Route::get('homePatient', function (){
     return view('patient.home');
-})->name('homePatient');
+})->middleware(['auth'])->name('homePatient');
 
-Route::get('rendezvous', function (){
-    return view('patient.rv');
-})->name('rendezvous');
+
 
 Route::get('patients', [PatientController::class, 'index'])->name('listPatients');
 Route::put('patient/{id}', [UserController::class, 'update'])->name('updatePatient');
@@ -136,16 +135,15 @@ Route::post('tarif', [TarifController::class, 'store'])->name('addTarif');
 /*--------------------------------------------------------------------------------------
                                     Route Rendez-vous
 ---------------------------------------------------------------------------------------*/
-Route::get('rendezVous', [RendezvousController::class, 'index'])->name('listRendezVous');
+Route::get('rendezVous', [RendezvousController::class, 'index'])->name('rendezVous');
 Route::get('rendezVous/{id}', [RendezvousController::class, 'show'])->name('infoRendezVous');
 Route::get('rendezVous/{id}', [RendezvousController::class, 'destroy'])->name('deleteRendezVous');
 Route::put('rendezVous/{id}', [RendezvousController::class, 'update'])->name('updateRendezVous');
 Route::post('rendezVous', [RendezvousController::class, 'store'])->name('addRendezVous');
+Route::get('getMedecinId/{id}', [RendezvousController::class, 'getMedecinId'])->name('getMedecinId');
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

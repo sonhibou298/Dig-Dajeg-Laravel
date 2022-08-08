@@ -61,7 +61,7 @@ class MedecinController extends Controller
     public function show(Medecin $medecin, $id)
     {
         $medecin = Medecin::find($id);
-        return $medecin;
+        return view('rendezvous.rv', compact('medecin'));
     }
 
 
@@ -114,8 +114,16 @@ class MedecinController extends Controller
     public function search()
     {
 
-        $search= Medecin::where('service_id', 'like' , '%'.$result.'%')->get();
+//        $request= Medecin::where('service_id', 'like' , '%'.$service_id.'%')->get();
+//
+//        return response()->json($request);
+        $medecin = Medecin::query();
+        if (request('term'))
+        {
+            $medecin->where('service_id', 'LIKE', '%'.request('term'). '%');
+        }
 
-        return dd($search);
+        return response()->json($medecin);
+
     }
 }

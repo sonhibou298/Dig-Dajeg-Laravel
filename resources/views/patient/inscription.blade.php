@@ -140,13 +140,10 @@
                             </div>
                         </div>
                         <div class="col-2">
-                            <div class="input-group">
+                            <div class="input-group" hidden>
                                 <label class="label">Role</label>
-                                <select class="input-group" aria-label="Default select example" name="role_id">
-                                    <option selected hidden>Open this select menu</option>
-                                    <option value="3">Patient</option>
+                                <input class="input--style-4" type="text" name="role_id" value="3">
 
-                                </select>
                             </div>
                         </div>
                     </div>
