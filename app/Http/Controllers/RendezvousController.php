@@ -57,7 +57,7 @@ class RendezvousController extends Controller
             'proche_id' => $request->input('proche_id'),
             'patient_id' => Auth::id(),
         ]);
-        return response()->json($rv);
+        dd($rv);
     }
 
     /**

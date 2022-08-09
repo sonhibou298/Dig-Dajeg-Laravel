@@ -103,8 +103,10 @@ Route::put('patient/{id}', [UserController::class, 'update'])->name('updatePatie
 Route::get('patient/{id}', [UserController::class, 'show'])->name('infoPatient');
 Route::delete('patient/{id}', [UserController::class, 'destroy'])->name('deletePatient');
 Route::post('patient', [PatientController::class, 'store'])->name('addPatient');
-
 Route::get('getId', [PatientController::class, 'getIdLastUser']);
+Route::get('mesRendezvous', [PatientController::class, 'mesRendezvous'])->name('mesRendezvous');
+Route::get('medecinFavoris', [PatientController::class, 'medecinFavoris'])->name('medecinFavoris');
+Route::get('patient/compte', [PatientController::class, 'monCompte'])->name('patientCompte');
 /*--------------------------------------------------------------------------------------
                                     Route Proche
 ---------------------------------------------------------------------------------------*/

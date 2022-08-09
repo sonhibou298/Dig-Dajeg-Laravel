@@ -90,4 +90,18 @@ class PatientController extends Controller
         $getId = User::where('role_id', '=', '3')->latest()->first()->id;
         return response()->json($getId);
     }
+    public function mesRendezvous(){
+
+        return view('patient.mesrendezvous');
+    }
+
+    public function medecinFavoris(){
+
+        return view('patient.mesMedecinFavoris');
+    }
+
+    public function monCompte(){
+
+        return view('patient.monCompte');
+    }
 }
