@@ -32,14 +32,13 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    <div class="alert alert-danger mt-3" role="alert">{{$error}}</div>
+                @endforeach
+            @endif
             <form class="login100-form validate-form flex-sb flex-w" method="post" action={{'login'}}>
                 @csrf
-
-                @if(session('message'))
-                    <div class="alert alert-message">
-                        {{session('message')}}
-                    </div>
-                @endif
 					<span class="login100-form-title p-b-32">
 						Connexion
 					</span>

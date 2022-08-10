@@ -38,11 +38,11 @@ class RendezvousController extends Controller
     {
         $fields = $request->validate([
 //            'dateReservation' => ['required', 'date'],
-            'dateRendezVous' => ['required', 'date'],
-            'heureRendezVous' => ['require', 'time'],
+            'dateRendezVous' => ['required', 'date', 'before:today'],
+            'heureRendezVous' => ['required', 'time'],
             'motifConsultation' => ['required', 'string'],
             'tarif_id' => ['required', 'int'],
-            'medecin_id' => ['required', 'date'],
+            'medecin_id' => ['required', 'int'],
 
         ]);
         $rv = Rendezvous::create([
@@ -55,7 +55,7 @@ class RendezvousController extends Controller
             'tarif_id' => $fields['tarif'],
             'medecin_id' => $fields['medecin_id'],
             'proche_id' => $request->input('proche_id'),
-            'patient_id' => Auth::id(),
+            'patient_id' => Auth::id()
         ]);
         dd($rv);
     }

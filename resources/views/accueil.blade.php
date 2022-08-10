@@ -18,14 +18,14 @@ http://www.tooplate.com/view/2098-health
     <meta name="author" content="Tooplate">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link rel="stylesheet" href="./TemplateHome/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./TemplateHome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./TemplateHome/css/animate.css">
-    <link rel="stylesheet" href="./TemplateHome/css/owl.carousel.css">
-    <link rel="stylesheet" href="./TemplateHome/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/owl.carousel.css')}}">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/owl.theme.default.min.css')}}">
 
     <!-- MAIN CSS -->
-    <link rel="stylesheet" href="./TemplateHome/css/tooplate-style.css">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/tooplate-style.css')}}">
 
 </head>
 
@@ -61,7 +61,7 @@ http://www.tooplate.com/view/2098-health
 
 
 <!-- MENU -->
-<section class="navbar navbar-default navbar-static-top" role="navigation">
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container">
 
         <div class="navbar-header">
@@ -88,7 +88,7 @@ http://www.tooplate.com/view/2098-health
             </ul>
         </div>
     </div>
-</section>
+</nav>
 
 
 <!-- HOME -->
@@ -491,14 +491,14 @@ http://www.tooplate.com/view/2098-health
 </footer>
 
 <!-- SCRIPTS -->
-<script src="./TemplateHome/js/jquery.js"></script>
-<script src="./TemplateHome/js/bootstrap.min.js"></script>
-<script src="./TemplateHome/js/jquery.sticky.js"></script>
-<script src="./TemplateHome/js/jquery.stellar.min.js"></script>
-<script src="./TemplateHome/js/wow.min.js"></script>
-<script src="./TemplateHome/js/smoothscroll.js"></script>
-<script src="./TemplateHome/js/owl.carousel.min.js"></script>
-<script src="./TemplateHome/js/custom.js"></script>
+<script src="{{asset('./TemplateHome/js/jquery.js')}}"></script>
+<script src="{{asset('./TemplateHome/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('./TemplateHome/js/jquery.sticky.js')}}"></script>
+<script src="{{asset('./TemplateHome/js/jquery.stellar.min.js')}}"></script>
+<script src="{{asset('./TemplateHome/js/wow.min.js')}}"></script>
+<script src="{{asset('./TemplateHome/js/smoothscroll.js')}}"></script>
+<script src="{{asset('./TemplateHome/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('./TemplateHome/js/custom.js')}}"></script>
 
 </body>
 
