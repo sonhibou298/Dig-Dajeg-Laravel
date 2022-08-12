@@ -16,16 +16,12 @@ class Rendezvous extends Model
         'motifConsultation',
         'etat',
         'paye',
-        'tarif_id',
+        'tarif',
         'medecin_id',
         'patient_id',
         'proche_id'
     ];
 
-    public function tarif()
-    {
-        return $this->belongsTo(Tarif::class);
-    }
 
     public function patient()
     {

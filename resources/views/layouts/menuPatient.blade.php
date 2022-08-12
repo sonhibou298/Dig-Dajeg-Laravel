@@ -59,7 +59,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav navbar-right">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Accueil</a>
+                    <a class="nav-link" href={{route('homePatient')}}>Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href={{route('listMedecins')}}>Rechercher un medecin</a>

@@ -36,28 +36,28 @@ class RendezvousController extends Controller
      */
     public function store(StoreRendezvousRequest $request)
     {
-        $fields = $request->validate([
-//            'dateReservation' => ['required', 'date'],
-            'dateRendezVous' => ['required', 'date', 'before:today'],
-            'heureRendezVous' => ['required', 'time'],
-            'motifConsultation' => ['required', 'string'],
-            'tarif_id' => ['required', 'int'],
-            'medecin_id' => ['required', 'int'],
-
-        ]);
+//        $fields = $request->validate([
+////            'dateReservation' => ['required', 'date'],
+//            'dateRendezVous' => ['required', 'date', 'before:today'],
+//            'heureRendezVous' => ['required', 'time'],
+//            'motifConsultation' => ['required', 'string'],
+//            'tarif_id' => ['required', 'int'],
+//            'medecin_id' => ['required', 'int'],
+//
+//        ]);
         $rv = Rendezvous::create([
             'dateReservation' => Carbon::now(),
-            'dateRendezVous' => $fields['dateRv'],
-            'heureRendezVous' => $fields['heure'],
-            'motifConsultation' => $fields['motif'],
+            'dateRendezVous' => $request->input('dateRv'),
+            'heureRendezVous' => $request->input('heure'),
+            'motifConsultation' => $request->input('motif'),
             'etat' => 'En attente',
             'paye' => $request->input('paye'),
-            'tarif_id' => $fields['tarif'],
-            'medecin_id' => $fields['medecin_id'],
+            'tarif' => $request->input('tarif'),
+            'medecin_id' => $request->input('medecin_id'),
             'proche_id' => $request->input('proche_id'),
-            'patient_id' => Auth::id()
+            'patient_id' => Auth::user()->Patient->id
         ]);
-        dd($rv);
+        return view('patient.mesrendezvous');
     }
 
     /**

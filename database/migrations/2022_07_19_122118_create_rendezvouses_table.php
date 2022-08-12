@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('motifConsultation');
             $table->enum('etat', ['En attente', 'Approuvé', 'Reporté']);
             $table->boolean('paye');
-            $table->foreignId('tarif_id')->constrained()->onDelete('cascade');
+            $table->integer('tarif');
             $table->foreignId('medecin_id')->constrained()->onDelete('cascade');
             $table->foreignId('patient_id')->constrained()->onDelete('cascade');
             $table->foreignId('proche_id')->nullable()->constrained()->onDelete('cascade');

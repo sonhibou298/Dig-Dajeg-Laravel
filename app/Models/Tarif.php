@@ -15,8 +15,5 @@ class Tarif extends Model
         return $this->hasMany(Service::class);
     }
 
-    public function rendezvous()
-    {
-        return $this->hasMany(Rendezvous::class);
-    }
+
 }

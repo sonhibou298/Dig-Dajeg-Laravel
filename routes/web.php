@@ -138,11 +138,11 @@ Route::post('tarif', [TarifController::class, 'store'])->name('addTarif');
                                     Route Rendez-vous
 ---------------------------------------------------------------------------------------*/
 Route::get('rendezVous', [RendezvousController::class, 'index'])->name('rendezVous');
-Route::get('rendezVous/{id}', [RendezvousController::class, 'show'])->name('infoRendezVous');
-Route::get('rendezVous/{id}', [RendezvousController::class, 'destroy'])->name('deleteRendezVous');
-Route::put('rendezVous/{id}', [RendezvousController::class, 'update'])->name('updateRendezVous');
 Route::post('rendezVous', [RendezvousController::class, 'store'])->name('addRendezVous');
 Route::get('getMedecinId/{id}', [RendezvousController::class, 'getMedecinId'])->name('getMedecinId');
+Route::get('rendezVousUpdate/{id}', [RendezvousController::class, 'show'])->name('infoRendezVous');
+Route::get('rendezVousDelete/{id}', [RendezvousController::class, 'destroy'])->name('deleteRendezVous');
+Route::put('rendezVous/{id}', [RendezvousController::class, 'update'])->name('updateRendezVous');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
