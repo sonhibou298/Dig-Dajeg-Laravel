@@ -145,6 +145,8 @@ Route::get('getMedecinId/{id}', [RendezvousController::class, 'getMedecinId'])->
 Route::get('rendezVousUpdate/{id}', [RendezvousController::class, 'show'])->name('infoRendezVous');
 Route::get('rendezVousDelete/{id}', [RendezvousController::class, 'destroy'])->name('deleteRendezVous');
 Route::put('rendezVous/{id}', [RendezvousController::class, 'update'])->name('updateRendezVous');
+Route::put('approuver/{id}', [RendezvousController::class, 'approuver'])->name('approuverRendezVous');
+Route::put('rejeter/{id}', [RendezvousController::class, 'rejeter'])->name('rejeterRendezVous');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

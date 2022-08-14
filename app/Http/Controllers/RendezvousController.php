@@ -102,5 +102,22 @@ class RendezvousController extends Controller
         $medecin = Medecin::find($id);
         return view('rendezvous.rv', compact('medecin'));
     }
+    public function approuver(UpdateRendezvousRequest $request, Rendezvous $rendezvous, $id)
+    {
+        $rendezvous = Rendezvous::find($id);
+        $rendezvous->update([
+            'etat' => 'Approuvé'
+        ]);
+        return redirect()->route('homeMedecin', compact('rendezvous'))->with('toast-success', 'Rendez-vous approuvvé');
 
+    }
+    public function rejeter(UpdateRendezvousRequest $request, Rendezvous $rendezvous, $id)
+    {
+        $rendezvous = Rendezvous::find($id);
+        $rendezvous->update([
+            'etat' => 'Reporté'
+        ]);
+        return redirect()->route('homeMedecin', compact('rendezvous'))->with('toast-success', 'Rendez-vous approuvvé');
+
+    }
 }

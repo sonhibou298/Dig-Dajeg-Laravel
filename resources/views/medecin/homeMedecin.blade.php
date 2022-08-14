@@ -161,8 +161,18 @@ http://www.tooplate.com/view/2098-health
             <td>{{$rv->motifConsultation}}</td>
             <td style="width: 100px">{{$rv->etat}}</td>
             <td>{{$rv->proche_id}}</td>
-            <td style="width: 30px"><button type="button" class="btn btn-outline-success">Approuver</button></td>
-            <td style="width: 30px"><button type="button" class="btn btn-outline-danger">Rejeter</button></td>
+            <form method="post" action={{route('approuverRendezVous', $rv->id)}}>
+                @csrf
+                @method('PUT')
+                <td style="width: 30px">
+                    <button type="submit" class="btn btn-outline-success">Approuver</button>
+                </td>
+            </form>
+            <form method="post" action={{route('rejeterRendezVous', $rv->id)}}>
+                @csrf
+                @method('PUT')
+                <td style="width: 30px"><button type="submit" class="btn btn-outline-danger">Rejeter</button></td>
+            </form>
         </tr>
         @endforeach
 
@@ -171,7 +181,7 @@ http://www.tooplate.com/view/2098-health
     </table>
 </section>
 
-
+@include('sweetalert::alert')
 </body>
 <script src="./TemplateHome/js/jquery.js"></script>
 <script src="./TemplateHome/js/bootstrap.min.js"></script>
@@ -182,6 +192,5 @@ http://www.tooplate.com/view/2098-health
 <script src="./TemplateHome/js/owl.carousel.min.js"></script>
 <script src="./TemplateHome/js/custom.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
 
 </html>
