@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Medecin;
 use App\Http\Requests\StoreMedecinRequest;
 use App\Http\Requests\UpdateMedecinRequest;
+use App\Models\Patient;
 use App\Models\Rendezvous;
 use App\Models\User;
 use http\Env\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MedecinController extends Controller
@@ -108,7 +110,7 @@ class MedecinController extends Controller
         $rve = Rendezvous::where('etat', 'En attente')->count();
         $rvr = Rendezvous::where('etat', 'Reporté')->count();
         $users = User::count();
-        return view('medecin.homeMedecin', compact('rendezvous','rv','rva', 'rve', 'rvr', 'users'));
+        return view('medecin.homeMedecin', compact('rendezvous', 'rv','rva', 'rve', 'rvr', 'users'));
     }
 
     public function search()

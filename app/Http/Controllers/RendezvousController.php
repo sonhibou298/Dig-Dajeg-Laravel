@@ -10,6 +10,7 @@ use App\Models\Service;
 use App\Models\Tarif;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Console\Input\Input;
 
 class RendezvousController extends Controller
 {
@@ -36,15 +37,6 @@ class RendezvousController extends Controller
      */
     public function store(StoreRendezvousRequest $request)
     {
-//        $fields = $request->validate([
-////            'dateReservation' => ['required', 'date'],
-//            'dateRendezVous' => ['required', 'date', 'before:today'],
-//            'heureRendezVous' => ['required', 'time'],
-//            'motifConsultation' => ['required', 'string'],
-//            'tarif_id' => ['required', 'int'],
-//            'medecin_id' => ['required', 'int'],
-//
-//        ]);
         $rv = Rendezvous::create([
             'dateReservation' => Carbon::now(),
             'dateRendezVous' => $request->input('dateRv'),
@@ -55,9 +47,9 @@ class RendezvousController extends Controller
             'tarif' => $request->input('tarif'),
             'medecin_id' => $request->input('medecin_id'),
             'proche_id' => $request->input('proche_id'),
-            'patient_id' => Auth::user()->Patient->id
+            'patient_id' => Auth::user()->Patient->id,
         ]);
-        return view('patient.mesrendezvous');
+        return redirect('mesRendezvous')->with('toast_success', 'Votre rendez-vous est crée');
     }
 
     /**

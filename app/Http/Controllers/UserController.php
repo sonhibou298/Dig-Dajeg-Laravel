@@ -66,7 +66,7 @@ class UserController extends Controller
                 'user_id' => $getId,
             ]);
         }
-        return redirect('login')->with('message', 'Success');
+        return redirect('login')->with('toast_success', 'Patient crée avec succès');
 
     }
 
@@ -183,11 +183,11 @@ class UserController extends Controller
 //    }
     public function deconnexion(Request $request){
         Auth::logout();
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
         return redirect('/');
 
+    }
+    public function isPatient()
+    {
+        return false;
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\TarifController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use RealRashid\SweetAlert\Facades\Alert;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,7 +71,7 @@ Route::get('deconnexion', [UserController::class, 'deconnexion'])->name('deconne
 /*--------------------------------------------------------------------------------------
                                     Route Medecin
 ---------------------------------------------------------------------------------------*/
-Route::get('homeMedecin', [MedecinController::class, 'statistique'])->middleware(['auth'])->name('homeMedecin');
+Route::get('homeMedecin', [MedecinController::class, 'statistique'])->middleware(['auth'])->middleware('disable_back')->name('homeMedecin');
 
 Route::get('medecins', [MedecinController::class, 'index'])->name('listMedecins');
 Route::put('medecin/{id}', [UserController::class, 'update'])->name('updateProfilMedecin');
@@ -93,8 +94,9 @@ Route::get('/inscription', function (){
 })->name('inscription');
 
 Route::get('homePatient', function (){
+
     return view('patient.home');
-})->middleware(['auth'])->name('homePatient');
+})->middleware(['auth'])->middleware('disable_back')->name('homePatient');
 
 
 

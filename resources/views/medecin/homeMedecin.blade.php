@@ -69,7 +69,7 @@ http://www.tooplate.com/view/2098-health
                     <a class="nav-link" href="#">Mon compte</a>
                 </li>
                 <li class="nav-item">
-                    <a class="appointment-btn" href="#">Deconnexion</a>
+                    <a class="appointment-btn" href={{route('deconnexion')}}>Deconnexion</a>
                 </li>
             </ul>
         </div>
@@ -143,41 +143,34 @@ http://www.tooplate.com/view/2098-health
             <th scope="col">Date Rv</th>
             <th scope="col">Heure Rv</th>
             <th scope="col">Motif</th>
-            <th scope="col">Tarif</th>
+            <th scope="col">Etat</th>
             <th scope="col">Proche</th>
-            <th scope="col">Payé</th>
+{{--            <th scope="col">Payé</th>--}}
+            <th scope="col">Action</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
+        @foreach($rendezvous as $rv)
         <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+            <td>{{$rv->patient_id}}</td>
+            <td>{{$rv->dateReservation}}</td>
+            <td>{{$rv->dateRendezVous}}</td>
+            <td>{{$rv->heureRendezVous}}</td>
+            <td>{{$rv->motifConsultation}}</td>
+            <td style="width: 100px">{{$rv->etat}}</td>
+            <td>{{$rv->proche_id}}</td>
+            <td style="width: 30px"><button type="button" class="btn btn-outline-success">Approuver</button></td>
+            <td style="width: 30px"><button type="button" class="btn btn-outline-danger">Rejeter</button></td>
         </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
+        @endforeach
+
+
         </tbody>
     </table>
 </section>
+
 
 </body>
 <script src="./TemplateHome/js/jquery.js"></script>

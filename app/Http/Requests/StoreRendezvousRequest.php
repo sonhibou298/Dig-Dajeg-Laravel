@@ -24,11 +24,11 @@ class StoreRendezvousRequest extends FormRequest
     public function rules()
     {
         return [
-            'dateReservation' => ['required', 'date'],
-            'dateRendezVous' => ['required', 'date', 'before:today'],
-            'heureRendezVous' => ['required', 'time'],
-            'motifConsultation' => ['required', 'string'],
-            'medecin_id' => ['required', 'int'],
+//            'dateReservation' => ['required', 'date'],
+//            'dateRendezVous' => ['required', 'date', 'before:today'],
+//            'heureRendezVous' => ['required', 'time'],
+//            'motifConsultation' => ['required', 'string'],
+//            'medecin_id' => ['required', 'int'],
         ];
     }
 }

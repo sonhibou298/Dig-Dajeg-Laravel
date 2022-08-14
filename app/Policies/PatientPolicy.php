@@ -10,6 +10,7 @@ class PatientPolicy
 {
     use HandlesAuthorization;
 
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +19,7 @@ class PatientPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->role()->libelle('Patient');
     }
 
     /**
