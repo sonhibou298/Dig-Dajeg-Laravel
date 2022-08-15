@@ -104,15 +104,17 @@ class MedecinController extends Controller
     }
 
     public function statistique(){
-        $MedecinConnect = Auth::user()->Medecin->id;
+        $medecinConnect = Auth::user()->Medecin->id;
 
-        $rendezvous = Rendezvous::all();
-        $rv = Rendezvous::count();
-        $rva = Rendezvous::where('etat', 'Approuvé')->count();
-        $rve = Rendezvous::where('etat', 'En attente')->count();
-        $rvr = Rendezvous::where('etat', 'Reporté')->count();
+        $rendezvous = Rendezvous::all()->where('medecin_id', '===', $medecinConnect);
+        $rv = Rendezvous::where('medecin_id', $medecinConnect)->count();
+        $rva = Rendezvous::where('etat', 'Approuvé')->where('medecin_id', $medecinConnect)->count();
+        $rve = Rendezvous::where('etat', 'En attente')->where('medecin_id', $medecinConnect)->count();
+        $rvr = Rendezvous::where('etat', 'Reporté')->where('medecin_id', $medecinConnect)->count();
         $users = User::count();
-        return view('medecin.homeMedecin', compact('rendezvous', 'rv','rva', 'rve', 'rvr', 'users'));
+        $patient =Patient::all();
+
+        return view('medecin.homeMedecin', compact('rendezvous', 'patient','rv','rva', 'rve', 'rvr', 'users'));
     }
 
     public function search()

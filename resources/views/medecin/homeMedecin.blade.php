@@ -137,7 +137,7 @@ http://www.tooplate.com/view/2098-health
     <table class="table table-bordered">
         <thead>
         <tr class="text">
-            <th scope="col">#</th>
+
             <th scope="col">Prenom & Nom</th>
             <th scope="col">Date réservation</th>
             <th scope="col">Date Rv</th>
@@ -153,8 +153,7 @@ http://www.tooplate.com/view/2098-health
         <tbody>
         @foreach($rendezvous as $rv)
         <tr>
-            <th scope="row">1</th>
-            <td>{{$rv->patient_id}}</td>
+            <td>{{$rv->Patient->User->prenom.' '.$rv->Patient->User->nom}}</td>
             <td>{{$rv->dateReservation}}</td>
             <td>{{$rv->dateRendezVous}}</td>
             <td>{{$rv->heureRendezVous}}</td>
