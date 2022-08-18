@@ -11,6 +11,7 @@ use App\Models\Tarif;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RendezvousController extends Controller
 {
@@ -37,6 +38,8 @@ class RendezvousController extends Controller
      */
     public function store(StoreRendezvousRequest $request)
     {
+
+
         $rv = Rendezvous::create([
             'dateReservation' => Carbon::now(),
             'dateRendezVous' => $request->input('dateRv'),
@@ -108,7 +111,7 @@ class RendezvousController extends Controller
         $rendezvous->update([
             'etat' => 'Approuvé'
         ]);
-        return redirect()->route('homeMedecin', compact('rendezvous'))->with('toast-success', 'Rendez-vous approuvvé');
+        return redirect()->route('homeMedecin', compact('rendezvous'))->with('toast_success', 'Rendez-vous approuvvé');
 
     }
     public function rejeter(UpdateRendezvousRequest $request, Rendezvous $rendezvous, $id)
@@ -117,7 +120,7 @@ class RendezvousController extends Controller
         $rendezvous->update([
             'etat' => 'Reporté'
         ]);
-        return redirect()->route('homeMedecin', compact('rendezvous'))->with('toast-success', 'Rendez-vous approuvvé');
+        return redirect()->route('homeMedecin', compact('rendezvous'))->with('toast_error', 'Rendez-vous rejeté');
 
     }
 }

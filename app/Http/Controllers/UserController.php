@@ -42,7 +42,7 @@ class UserController extends Controller
             'adresse' => ['required', 'min:2'],
             'genre' => ['required'],
             'dateNaissance' => ['required'],
-            'email' => ['email:rfc,dns'],
+            'email' => ['email'],
             'password' => ['required', 'min:4'],
         ]);
 

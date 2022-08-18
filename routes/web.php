@@ -71,16 +71,17 @@ Route::get('deconnexion', [UserController::class, 'deconnexion'])->name('deconne
 /*--------------------------------------------------------------------------------------
                                     Route Medecin
 ---------------------------------------------------------------------------------------*/
-Route::get('homeMedecin', [MedecinController::class, 'statistique'])->middleware(['auth'])->middleware('disable_back')->name('homeMedecin');
+Route::middleware(['auth', 'isMedecin', 'disable_back'])->group(function (){
+    Route::get('homeMedecin', [MedecinController::class, 'statistique'])->name('homeMedecin');
+    Route::put('medecin/{id}', [UserController::class, 'update'])->name('updateProfilMedecin');
+    Route::put('medecin/{id}', [MedecinController::class, 'update'])->name('updateServiceMedecin');
+    Route::delete('medecin/{id}', [MedecinController::class, 'destroy'])->name('deleteMedecin');
+    Route::get('medecin/{id}', [MedecinController::class, 'show'])->name('infoMedecin');
+    Route::post('medecin', [MedecinController::class, 'store'])->name('addMedecin');
+    Route::get('test', [MedecinController::class, 'infoMedecin'])->name('test');
+    Route::get('search', [MedecinController::class, 'search'])->name('search');
+});
 
-Route::get('medecins', [MedecinController::class, 'index'])->name('listMedecins');
-Route::put('medecin/{id}', [UserController::class, 'update'])->name('updateProfilMedecin');
-Route::put('medecin/{id}', [MedecinController::class, 'update'])->name('updateServiceMedecin');
-Route::delete('medecin/{id}', [MedecinController::class, 'destroy'])->name('deleteMedecin');
-Route::get('medecin/{id}', [MedecinController::class, 'show'])->name('infoMedecin');
-Route::post('medecin', [MedecinController::class, 'store'])->name('addMedecin');
-Route::get('test', [MedecinController::class, 'infoMedecin'])->name('test');
-Route::get('search', [MedecinController::class, 'search'])->name('search');
 
 /*--------------------------------------------------------------------------------------
                                     Route Patient
@@ -93,22 +94,29 @@ Route::get('/inscription', function (){
     return view('patient.inscription');
 })->name('inscription');
 
-Route::get('homePatient', function (){
+//Route::get('homePatient', function (){
+//
+//    return view('patient.home');
+//})->middleware(['auth', 'isPatient', 'disable_back'])->name('homePatient');
 
-    return view('patient.home');
-})->middleware(['auth'])->middleware('disable_back')->name('homePatient');
 
+Route::middleware(['auth', 'isPatient', 'disable_back'])->group(function (){
+    Route::get('homePatient', function (){
+        return view('patient.home');
+    })->name('homePatient');
+    Route::get('medecins', [MedecinController::class, 'index'])->name('listMedecins');
+    Route::get('patients', [PatientController::class, 'index'])->name('listPatients');
+    Route::put('patient/{id}', [UserController::class, 'update'])->name('updatePatient');
+    Route::get('patient/{id}', [UserController::class, 'show'])->name('infoPatient');
+    Route::delete('patient/{id}', [UserController::class, 'destroy'])->name('deletePatient');
+    Route::post('patient', [PatientController::class, 'store'])->name('addPatient');
+    Route::get('getId', [PatientController::class, 'getIdLastUser']);
+    Route::get('mesRendezvous', [PatientController::class, 'mesRendezvous'])->name('mesRendezvous');
+    Route::get('medecinFavoris', [PatientController::class, 'medecinFavoris'])->name('medecinFavoris');
+    Route::get('patient/compte', [PatientController::class, 'monCompte'])->name('patientCompte');
 
+});
 
-Route::get('patients', [PatientController::class, 'index'])->name('listPatients');
-Route::put('patient/{id}', [UserController::class, 'update'])->name('updatePatient');
-Route::get('patient/{id}', [UserController::class, 'show'])->name('infoPatient');
-Route::delete('patient/{id}', [UserController::class, 'destroy'])->name('deletePatient');
-Route::post('patient', [PatientController::class, 'store'])->name('addPatient');
-Route::get('getId', [PatientController::class, 'getIdLastUser']);
-Route::get('mesRendezvous', [PatientController::class, 'mesRendezvous'])->name('mesRendezvous');
-Route::get('medecinFavoris', [PatientController::class, 'medecinFavoris'])->name('medecinFavoris');
-Route::get('patient/compte', [PatientController::class, 'monCompte'])->name('patientCompte');
 /*--------------------------------------------------------------------------------------
                                     Route Proche
 ---------------------------------------------------------------------------------------*/

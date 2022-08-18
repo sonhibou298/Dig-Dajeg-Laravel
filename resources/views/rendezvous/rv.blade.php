@@ -33,12 +33,13 @@
                 <div class="form-group mt-2">
                     <label for="exampleInputPassword1">Motif</label>
                     <input type="text" class="form-control" id="exampleInputMotif" placeholder="Motif consultation" name="motif" value="{{old('motif')}}">
-
+                    @if($errors->any())
                         @foreach($errors->get('motifConsultation') as $error)
                             <div class="input-required">
                                 {{$error}}
                             </div>
                         @endforeach
+                    @endif
 
                 </div>
                 <div class="form-group mt-2" hidden>

@@ -106,6 +106,13 @@
                             <div class="input-group">
                                 <label class="label">Adresse</label>
                                 <input class="input--style-4" type="text" name="adresse">
+                                @if($errors->any())
+                                    @foreach($errors->get('adresse') as $error)
+                                        <div class="input-required">
+                                            {{$error}}
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -128,6 +135,13 @@
                             <div class="input-group">
                                 <label class="label">Mot de passe</label>
                                 <input class="input--style-4" type="password" name="password">
+                                @if($errors->any())
+                                    @foreach($errors->get('password') as $error)
+                                        <div class="input-required">
+                                            {{$error}}
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>

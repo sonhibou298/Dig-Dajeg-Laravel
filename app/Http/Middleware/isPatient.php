@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class DisableBackBtn
+class isPatient
 {
     /**
      * Handle an incoming request.
@@ -16,10 +17,12 @@ class DisableBackBtn
      */
     public function handle(Request $request, Closure $next)
     {
-        $response = $next($request);
-        $response->headers->set('Cache-Control', 'nocache, no-store, max-age=0, must-revaliate');
-        $response->headers->set('Pragma', 'nocache');
-        $response->headers->set('Expires', 'Sat, 01 Jan 2040 00:00:00 GMT');
-        return $response;
+        if ( Auth::check() && Auth::user()->role_id == 3){
+            return $next($request);
+        }
+        else{
+            abort(403);
+        }
+
     }
 }

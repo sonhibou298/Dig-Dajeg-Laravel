@@ -76,10 +76,13 @@
                 <li class="nav-item">
                     <a class="appointment-btn" href={{route('deconnexion')}}>Deconnexion</a>
                 </li>
+
             </ul>
+
         </div>
     </div>
 </nav>
+
 @yield('content')
 </body>
 <!-- SCRIPTS -->
