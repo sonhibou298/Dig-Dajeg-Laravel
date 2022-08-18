@@ -24,10 +24,9 @@ class StoreRendezvousRequest extends FormRequest
     public function rules()
     {
         return [
-
-//            'dateRendezVous' => ['required', 'date', 'before:today'],
-//            'heureRendezVous' => ['required', 'time'],
-//            'motifConsultation' => ['required', 'string'],
+            'dateRv' => ['required'],
+            'heure' => ['required'],
+            'motif' => ['required', 'string', 'min:5'],
 
         ];
     }

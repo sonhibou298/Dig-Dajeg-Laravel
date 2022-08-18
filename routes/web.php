@@ -120,6 +120,7 @@ Route::middleware(['auth', 'isPatient', 'disable_back'])->group(function (){
 /*--------------------------------------------------------------------------------------
                                     Route Proche
 ---------------------------------------------------------------------------------------*/
+
 Route::get('proches', [ProcheController::class, 'index'])->name('listProche');
 Route::get('proche/{id}', [ProcheController::class, 'show'])->name('infoProche');
 Route::get('proche/{id}', [ProcheController::class, 'destroy'])->name('deleteProche');
@@ -129,6 +130,7 @@ Route::post('proche', [ProcheController::class, 'store'])->name('addProche');
 /*--------------------------------------------------------------------------------------
                                     Route Service
 ---------------------------------------------------------------------------------------*/
+
 Route::get('services', [ServiceController::class, 'index'])->name('listServices');
 Route::get('service/{id}', [ServiceController::class, 'show'])->name('infoService');
 Route::get('service/{id}', [ServiceController::class, 'destroy'])->name('deleteService');

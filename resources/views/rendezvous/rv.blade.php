@@ -12,7 +12,7 @@
                     <label for="exampleInputEmail1">Date Rendez-vous</label>
                     <input type="date" class="form-control" id="exampleInputDate" aria-describedby="emailHelp" name="dateRv" value="{{old('dateRv')}}">
                     @if($errors->any())
-                        @foreach($errors->get('dateRendezVous') as $error)
+                        @foreach($errors->get('dateRv') as $error)
                             <div class="input-required">
                                 {{$error}}
                             </div>
@@ -23,7 +23,7 @@
                     <label for="exampleInputPassword1">Heure de rendez-vous</label>
                     <input type="time" class="form-control" id="exampleInputRv" placeholder="Heure" name="heure" value="{{old('heure')}}">
                     @if($errors->any())
-                        @foreach($errors->get('heureRendezVous') as $error)
+                        @foreach($errors->get('heure') as $error)
                             <div class="input-required">
                                 {{$error}}
                             </div>
@@ -34,7 +34,7 @@
                     <label for="exampleInputPassword1">Motif</label>
                     <input type="text" class="form-control" id="exampleInputMotif" placeholder="Motif consultation" name="motif" value="{{old('motif')}}">
                     @if($errors->any())
-                        @foreach($errors->get('motifConsultation') as $error)
+                        @foreach($errors->get('motif') as $error)
                             <div class="input-required">
                                 {{$error}}
                             </div>

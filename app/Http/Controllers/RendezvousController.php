@@ -38,8 +38,6 @@ class RendezvousController extends Controller
      */
     public function store(StoreRendezvousRequest $request)
     {
-
-
         $rv = Rendezvous::create([
             'dateReservation' => Carbon::now(),
             'dateRendezVous' => $request->input('dateRv'),
@@ -52,6 +50,7 @@ class RendezvousController extends Controller
             'proche_id' => $request->input('proche_id'),
             'patient_id' => Auth::user()->Patient->id,
         ]);
+
         return redirect('mesRendezvous')->with('toast_success', 'Votre rendez-vous est crée');
     }
 
