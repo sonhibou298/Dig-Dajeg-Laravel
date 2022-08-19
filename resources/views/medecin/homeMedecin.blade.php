@@ -158,7 +158,22 @@ http://www.tooplate.com/view/2098-health
             <td>{{$rv->dateRendezVous}}</td>
             <td>{{$rv->heureRendezVous}}</td>
             <td>{{$rv->motifConsultation}}</td>
-            <td style="width: 100px">{{$rv->etat}}</td>
+            <td style="width: 100px">
+                @if($rv->etat == 'Approuvé')
+                    <div style="background-color: #CDF0EA; border-radius: 6px; font-size: 14px; text-align: center; font-weight: bold">
+                        <span style="color: #16a085">{{$rv->etat}}</span>
+                    </div>
+                @elseif($rv->etat == 'Reporté')
+                    <div style="background-color: #f6dbe0; border-radius: 6px; font-size: 14px; text-align: center; font-weight: bold">
+                        <span style="color: #e63c3c">{{$rv->etat}}</span>
+                    </div>
+                @elseif($rv->etat == 'En attente')
+                    <div style="background-color: #f8ebd9; border-radius: 6px; font-size: 14px; text-align: center; font-weight: bold">
+                        <span style="color: #F49C12">{{$rv->etat}}</span>
+                    </div>
+                @endif
+
+            </td>
             <td>{{$rv->proche_id}}</td>
             <form method="post" action={{route('approuverRendezVous', $rv->id)}}>
                 @csrf
@@ -174,10 +189,10 @@ http://www.tooplate.com/view/2098-health
             </form>
         </tr>
         @endforeach
-
-
         </tbody>
+
     </table>
+{{--    {{ $rendezvous->links() }}--}}
 </section>
 
 @include('sweetalert::alert')

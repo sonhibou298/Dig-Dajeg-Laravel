@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medecin;
 use App\Models\Patient;
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
+use App\Models\Rendezvous;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PatientController extends Controller
@@ -91,8 +94,12 @@ class PatientController extends Controller
         return response()->json($getId);
     }
     public function mesRendezvous(){
+        $patientConnect = Auth::user()->Patient->id;
+        $medecins = Medecin::all();
+        $rendezvous = Rendezvous::all()->where('patient_id','===', $patientConnect);
+        $patient = Patient::all();
 
-        return view('patient.mesrendezvous');
+        return view('patient.mesrendezvous', compact('medecins', 'rendezvous', 'patient'));
     }
 
     public function medecinFavoris(){

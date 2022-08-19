@@ -27,7 +27,6 @@ class StoreRendezvousRequest extends FormRequest
             'dateRv' => ['required'],
             'heure' => ['required'],
             'motif' => ['required', 'string', 'min:5'],
-
         ];
     }
 }
