@@ -38,25 +38,25 @@ class RendezvousController extends Controller
      */
     public function store(StoreRendezvousRequest $request)
     {
-        if('dateRendezVous' >= Carbon::now()){
+        $rvExist = Rendezvous::where('dateRendezVous',$request->dateRv)->where('heureRendezVous', $request->heure)->where('medecin_id',$request->medecin_id)->exists();
 
-        $rv = Rendezvous::create([
-            'dateReservation' => Carbon::now(),
-            'dateRendezVous' => $request->input('dateRv'),
-            'heureRendezVous' => $request->input('heure'),
-            'motifConsultation' => $request->input('motif'),
-            'etat' => 'En attente',
-            'paye' => $request->input('paye'),
-            'tarif' => $request->input('tarif'),
-            'medecin_id' => $request->input('medecin_id'),
-            'proche_id' => $request->input('proche_id'),
-            'patient_id' => Auth::user()->Patient->id,
-        ]);
+            if ($rvExist == null){
+                $rv = Rendezvous::create([
+                'dateReservation' => Carbon::now(),
+                'dateRendezVous' => $request->input('dateRv'),
+                'heureRendezVous' => $request->input('heure'),
+                'motifConsultation' => $request->input('motif'),
+                'etat' => 'En attente',
+                'paye' => $request->input('paye'),
+                'tarif' => $request->input('tarif'),
+                'medecin_id' => $request->input('medecin_id'),
+                'proche_id' => $request->input('proche_id'),
+                'patient_id' => Auth::user()->Patient->id,
+            ]);
             return redirect('mesRendezvous')->with('toast_success', 'Votre rendez-vous est crée');
-        }else{
-            return response()->json('Error');
-        }
 
+            }else{
+                return back()->with('error', 'Il y a deja un rendez attribué à cette date!');            }
     }
 
     /**

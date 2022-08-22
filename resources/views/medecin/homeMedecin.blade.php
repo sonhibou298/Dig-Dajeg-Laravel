@@ -192,7 +192,9 @@ http://www.tooplate.com/view/2098-health
         </tbody>
 
     </table>
-{{--    {{ $rendezvous->links() }}--}}
+    <div>
+{{--        {{$rendezvous->links()}}--}}
+    </div>
 </section>
 
 @include('sweetalert::alert')

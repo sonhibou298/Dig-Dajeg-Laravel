@@ -5,6 +5,7 @@
         <div class="card-header text-align-center">
             Remplissez ce formulaire pour prendre un rendez-vous
         </div>
+
         <div class="card-body">
             <form method="POST" action="{{route('addRendezVous')}}">
                 @csrf
@@ -56,7 +57,12 @@
                 </div>
                 <button type="submit" class="btn-submit mt-3">Enregistrer</button>
             </form>
-
+            <br>
+            @if(session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
         </div>
     </div>
 </section>

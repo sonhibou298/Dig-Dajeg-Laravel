@@ -24,7 +24,7 @@ class StoreRendezvousRequest extends FormRequest
     public function rules()
     {
         return [
-            'dateRv' => ['required'],
+            'dateRv' => ['required', 'after_or_equal:' .$this->date(DATE_ATOM)],
             'heure' => ['required'],
             'motif' => ['required', 'string', 'min:5'],
         ];

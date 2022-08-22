@@ -106,7 +106,7 @@ class MedecinController extends Controller
     public function statistique(){
         $medecinConnect = Auth::user()->Medecin->id;
 //      $rendezvous = Rendezvous::all()->where('medecin_id', '===', $medecinConnect);
-        $rendezvous = Rendezvous::paginate(6)->where('medecin_id', '===', $medecinConnect);
+        $rendezvous = Rendezvous::all()->where('medecin_id', '===', $medecinConnect);
         $rv = Rendezvous::where('medecin_id', $medecinConnect)->count();
         $rva = Rendezvous::where('etat', 'Approuvé')->where('medecin_id', $medecinConnect)->count();
         $rve = Rendezvous::where('etat', 'En attente')->where('medecin_id', $medecinConnect)->count();
