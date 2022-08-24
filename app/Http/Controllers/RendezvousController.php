@@ -67,8 +67,8 @@ class RendezvousController extends Controller
      */
     public function show(Rendezvous $rendezvous, $id)
     {
-        $rv = Rendezvous::find($id);
-        return $rv;
+        Rendezvous::find($id);
+        return back();
     }
 
 

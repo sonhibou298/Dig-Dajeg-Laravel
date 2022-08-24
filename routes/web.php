@@ -163,3 +163,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('homeAdmin', function (){
+   return view('admin.homeAdmin');
+});
+Route::get('addMedecin', [MedecinController::class, 'create'])->name('addMedecin');

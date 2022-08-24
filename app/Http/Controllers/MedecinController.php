@@ -9,6 +9,7 @@ use App\Models\Patient;
 use App\Models\Rendezvous;
 use App\Models\User;
 use http\Env\Request;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -32,7 +33,7 @@ class MedecinController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.addMedecin');
     }
 
     /**
@@ -106,7 +107,8 @@ class MedecinController extends Controller
     public function statistique(){
         $medecinConnect = Auth::user()->Medecin->id;
 //      $rendezvous = Rendezvous::all()->where('medecin_id', '===', $medecinConnect);
-        $rendezvous = Rendezvous::all()->where('medecin_id', '===', $medecinConnect);
+
+        $rendezvous = Rendezvous::where('medecin_id', $medecinConnect)->paginate(5);
         $rv = Rendezvous::where('medecin_id', $medecinConnect)->count();
         $rva = Rendezvous::where('etat', 'Approuvé')->where('medecin_id', $medecinConnect)->count();
         $rve = Rendezvous::where('etat', 'En attente')->where('medecin_id', $medecinConnect)->count();

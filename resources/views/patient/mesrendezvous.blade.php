@@ -41,7 +41,35 @@
 
                     </td>
                     <td style="width: 30px">
-                        <button type="submit" class="btn btn-outline-success">Voir</button>
+                        <a href="{{route('infoRendezVous', $rv->id)}}"><button type="submit" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Voir</button></a>
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6 style="font-weight: bold">Docteur</h6>
+                                        <p>Dr. {{$rv->Medecin->User->prenom.' '.$rv->Medecin->User->nom}}</p>
+                                        <hr>
+                                        <h6 style="font-weight: bold">Date Rendez-vous</h6>
+                                        <p>{{$rv->dateRendezVous}}</p>
+                                        <hr>
+                                        <h6 style="font-weight: bold">Heure Rendez-vous</h6>
+                                        <p>{{$rv->heureRendezVous}}</p>
+                                        <hr>
+                                        <h6 style="font-weight: bold">Motif Consultation</h6>
+                                        <p>{{$rv->motifConsultation}}</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn-submit mt-3">Modifier</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
 
 

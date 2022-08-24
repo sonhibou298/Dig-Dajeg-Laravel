@@ -19,14 +19,17 @@ http://www.tooplate.com/view/2098-health
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     {{--    <link rel="stylesheet" href="./TemplateHome/css/bootstrap.min.css">--}}
-    <link rel="stylesheet" href="./TemplateHome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./TemplateHome/css/animate.css">
-    <link rel="stylesheet" href="./TemplateHome/css/owl.carousel.css">
-    <link rel="stylesheet" href="./TemplateHome/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/owl.carousel.css')}}">
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/owl.theme.default.min.css')}}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- MAIN CSS -->
-    <link rel="stylesheet" href="./TemplateHome/css/tooplate-style.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js">
+
+    <link rel="stylesheet" href="{{asset('./TemplateHome/css/tooplate-style.css')}}">
 
 </head>
 
@@ -145,7 +148,7 @@ http://www.tooplate.com/view/2098-health
             <th scope="col">Motif</th>
             <th scope="col">Etat</th>
             <th scope="col">Proche</th>
-{{--            <th scope="col">Payé</th>--}}
+            {{--<th scope="col">Payé</th>--}}
             <th scope="col">Action</th>
             <th scope="col">Action</th>
         </tr>
@@ -192,13 +195,20 @@ http://www.tooplate.com/view/2098-health
         </tbody>
 
     </table>
-    <div>
-{{--        {{$rendezvous->links()}}--}}
-    </div>
+
+        <div class="col-md-6 mx-auto">
+           {{ $rendezvous->links() }}
+        </div>
 </section>
 
 @include('sweetalert::alert')
 </body>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+{{--<script type="text/javascript">--}}
+{{--    $(document).ready( function () {--}}
+{{--        $('.table').DataTable();--}}
+{{--    } );--}}
+{{--</script>--}}
 <script src="./TemplateHome/js/jquery.js"></script>
 <script src="./TemplateHome/js/bootstrap.min.js"></script>
 <script src="./TemplateHome/js/jquery.sticky.js"></script>

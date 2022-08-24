@@ -35,7 +35,7 @@
                 <form method="POST" action={{route('addUser')}}>
                     @csrf
                     <div class="row row-space">
-                        <div class="col-2">
+                        <div class="col-2 mt-2">
                             <div class="input-group">
                                 <label class="label">Nom</label>
                                 <input class="input--style-4" type="text" name="nom" data-validate = "Nom is required">
@@ -61,8 +61,8 @@
                                 @endif
                             </div>
                         </div>
-                    </div>
-                    <div class="row row-space">
+                        </div>
+                    <div class="row row-space mb-2">
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">Date Naissance</label>
