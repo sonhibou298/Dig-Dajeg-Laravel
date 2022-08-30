@@ -1243,11 +1243,12 @@ footer a:hover {
     color: #FFFFFF;
 }
 
-.table-rv{
-    margin-top: 50px;
-    overflow: scroll;
+.filtre-table{
+    margin-left: 8px;
 }
 .table-rv .table{
+    margin-top: 0px;
+    overflow: scroll;
     margin-right: 20px;
     margin-left: 20px;
 }

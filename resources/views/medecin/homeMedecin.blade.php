@@ -30,7 +30,13 @@ http://www.tooplate.com/view/2098-health
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js">
 
     <link rel="stylesheet" href="{{asset('./TemplateHome/css/tooplate-style.css')}}">
+    @livewireStyles
+    <style>
+        img,svg{
+            width: 30px;
+        }
 
+    </style>
 </head>
 
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
@@ -135,73 +141,13 @@ http://www.tooplate.com/view/2098-health
             </div>
     </div>
 </section>
-
+<br><br>
 <section class="table-rv">
-    <table class="table table-bordered">
-        <thead>
-        <tr class="text">
-
-            <th scope="col">Prenom & Nom</th>
-            <th scope="col">Date réservation</th>
-            <th scope="col">Date Rv</th>
-            <th scope="col">Heure Rv</th>
-            <th scope="col">Motif</th>
-            <th scope="col">Etat</th>
-            <th scope="col">Proche</th>
-            {{--<th scope="col">Payé</th>--}}
-            <th scope="col">Action</th>
-            <th scope="col">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($rendezvous as $rv)
-        <tr>
-            <td>{{$rv->Patient->User->prenom.' '.$rv->Patient->User->nom}}</td>
-            <td>{{$rv->dateReservation}}</td>
-            <td>{{$rv->dateRendezVous}}</td>
-            <td>{{$rv->heureRendezVous}}</td>
-            <td>{{$rv->motifConsultation}}</td>
-            <td style="width: 100px">
-                @if($rv->etat == 'Approuvé')
-                    <div style="background-color: #CDF0EA; border-radius: 6px; font-size: 14px; text-align: center; font-weight: bold">
-                        <span style="color: #16a085">{{$rv->etat}}</span>
-                    </div>
-                @elseif($rv->etat == 'Reporté')
-                    <div style="background-color: #f6dbe0; border-radius: 6px; font-size: 14px; text-align: center; font-weight: bold">
-                        <span style="color: #e63c3c">{{$rv->etat}}</span>
-                    </div>
-                @elseif($rv->etat == 'En attente')
-                    <div style="background-color: #f8ebd9; border-radius: 6px; font-size: 14px; text-align: center; font-weight: bold">
-                        <span style="color: #F49C12">{{$rv->etat}}</span>
-                    </div>
-                @endif
-
-            </td>
-            <td>{{$rv->proche_id}}</td>
-            <form method="post" action={{route('approuverRendezVous', $rv->id)}}>
-                @csrf
-                @method('PUT')
-                <td style="width: 30px">
-                    <button type="submit" class="btn btn-outline-success">Approuver</button>
-                </td>
-            </form>
-            <form method="post" action={{route('rejeterRendezVous', $rv->id)}}>
-                @csrf
-                @method('PUT')
-                <td style="width: 30px"><button type="submit" class="btn btn-outline-danger">Rejeter</button></td>
-            </form>
-        </tr>
-        @endforeach
-        </tbody>
-
-    </table>
-
-        <div class="col-md-6 mx-auto">
-           {{ $rendezvous->links() }}
-        </div>
+   @livewire('home-medecin-rv')
 </section>
 
 @include('sweetalert::alert')
+@livewireScripts
 </body>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 {{--<script type="text/javascript">--}}

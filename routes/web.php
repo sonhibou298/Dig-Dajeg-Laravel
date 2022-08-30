@@ -77,7 +77,6 @@ Route::middleware(['auth', 'isMedecin', 'disable_back'])->group(function (){
     Route::put('medecin/{id}', [MedecinController::class, 'update'])->name('updateServiceMedecin');
     Route::delete('medecin/{id}', [MedecinController::class, 'destroy'])->name('deleteMedecin');
     Route::get('medecin/{id}', [MedecinController::class, 'show'])->name('infoMedecin');
-    Route::post('medecin', [MedecinController::class, 'store'])->name('addMedecin');
     Route::get('test', [MedecinController::class, 'infoMedecin'])->name('test');
     Route::get('search', [MedecinController::class, 'search'])->name('search');
 });
@@ -167,4 +166,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('homeAdmin', function (){
    return view('admin.homeAdmin');
 });
-Route::get('addMedecin', [MedecinController::class, 'create'])->name('addMedecin');
+
+/*--------------------------------------------------------------------------------------
+                                    Route Rendez-vous
+---------------------------------------------------------------------------------------*/
+Route::post('medecin', [MedecinController::class, 'store'])->name('addMedecin');
+Route::get('addMedecin', [MedecinController::class, 'create'])->name('createMedecin');

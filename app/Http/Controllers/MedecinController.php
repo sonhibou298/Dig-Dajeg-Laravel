@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JourDeService;
 use App\Models\Medecin;
 use App\Http\Requests\StoreMedecinRequest;
 use App\Http\Requests\UpdateMedecinRequest;
 use App\Models\Patient;
 use App\Models\Rendezvous;
+use App\Models\Service;
 use App\Models\User;
 use http\Env\Request;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class MedecinController extends Controller
 {
@@ -23,7 +26,10 @@ class MedecinController extends Controller
     public function index()
     {
         $medecins = Medecin::all();
-        return view('medecin.listMedecin', compact('medecins'));
+        $user = User::all();
+        $service = Service::all();
+        $jourService = JourDeService::all();
+        return view('medecin.listMedecin', compact('medecins', 'user', 'service', ));
     }
 
     /**
@@ -33,7 +39,9 @@ class MedecinController extends Controller
      */
     public function create()
     {
-        return view('admin.addMedecin');
+        $jourService = JourDeService::all();
+        $service = Service::all();
+        return view('admin.addMedecin', compact('jourService', 'service'));
     }
 
     /**
@@ -44,15 +52,27 @@ class MedecinController extends Controller
      */
     public function store(StoreMedecinRequest $request)
     {
-        $fiels = $request->validate([
-            'disponible' => 'required|boolean',
-            'user_id' => 'required|int',
-            'jour_de_service_id' => 'required|int'
+        $data = $request->all();
+        $user = User::create([
+            'nom' => $request->input('nom'),
+            'prenom' => $request->input('prenom'),
+            'genre' => $request->input('genre'),
+            'telephone' => $request->input('telephone'),
+            'adresse' => $request->input('adresse'),
+            'dateNaissance' => $request->input('dateNaissance'),
+            'email' => $request->input('email'),
+            'password' =>Hash::make($request->input('password')),
+            'profil' => $request->input('profil'),
+            'role_id' => $request->input('role_id'),
         ]);
-
+        $getId = User::where('role_id', '=', '2')->latest()->first()->id;
         $medecin = Medecin::create([
-
+            'user_id' => $getId,
+            'disponible' => $request->input('disponible'),
+            'jour_de_service_id' => $request->input('jourService'),
+            'service_id' => $request->input('service')
         ]);
+
     }
 
     /**

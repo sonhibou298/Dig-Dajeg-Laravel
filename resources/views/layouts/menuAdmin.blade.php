@@ -68,7 +68,7 @@
                         Gestion des medecins
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href={{route('addMedecin')}}>Ajouter un medecin</a></li>
+                        <li><a class="dropdown-item" href={{route('createMedecin')}}>Ajouter un medecin</a></li>
                         <li><a class="dropdown-item" href="#">Liste des medecins</a></li>
 
                     </ul>
